@@ -28,3 +28,7 @@ func KeyPrefix(p string) []byte {
 const (
 	UserKey = "User-value-"
 )
+
+const (
+	StockDataKey = "StockData-value-"
+)

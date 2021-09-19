@@ -28,6 +28,286 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // this line is used by starport scaffolding # proto/tx/message
+type MsgCreateStockData struct {
+	Creator string   `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string   `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Stocks  []*Stock `protobuf:"bytes,3,rep,name=stocks,proto3" json:"stocks,omitempty"`
+}
+
+func (m *MsgCreateStockData) Reset()         { *m = MsgCreateStockData{} }
+func (m *MsgCreateStockData) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStockData) ProtoMessage()    {}
+func (*MsgCreateStockData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{0}
+}
+func (m *MsgCreateStockData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStockData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStockData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStockData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStockData.Merge(m, src)
+}
+func (m *MsgCreateStockData) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStockData) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStockData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStockData proto.InternalMessageInfo
+
+func (m *MsgCreateStockData) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateStockData) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+func (m *MsgCreateStockData) GetStocks() []*Stock {
+	if m != nil {
+		return m.Stocks
+	}
+	return nil
+}
+
+type MsgCreateStockDataResponse struct {
+}
+
+func (m *MsgCreateStockDataResponse) Reset()         { *m = MsgCreateStockDataResponse{} }
+func (m *MsgCreateStockDataResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStockDataResponse) ProtoMessage()    {}
+func (*MsgCreateStockDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{1}
+}
+func (m *MsgCreateStockDataResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStockDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStockDataResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStockDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStockDataResponse.Merge(m, src)
+}
+func (m *MsgCreateStockDataResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStockDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStockDataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStockDataResponse proto.InternalMessageInfo
+
+type MsgUpdateStockData struct {
+	Creator string   `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string   `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+	Stocks  []*Stock `protobuf:"bytes,3,rep,name=stocks,proto3" json:"stocks,omitempty"`
+}
+
+func (m *MsgUpdateStockData) Reset()         { *m = MsgUpdateStockData{} }
+func (m *MsgUpdateStockData) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateStockData) ProtoMessage()    {}
+func (*MsgUpdateStockData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{2}
+}
+func (m *MsgUpdateStockData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateStockData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateStockData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateStockData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateStockData.Merge(m, src)
+}
+func (m *MsgUpdateStockData) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateStockData) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateStockData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateStockData proto.InternalMessageInfo
+
+func (m *MsgUpdateStockData) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgUpdateStockData) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+func (m *MsgUpdateStockData) GetStocks() []*Stock {
+	if m != nil {
+		return m.Stocks
+	}
+	return nil
+}
+
+type MsgUpdateStockDataResponse struct {
+}
+
+func (m *MsgUpdateStockDataResponse) Reset()         { *m = MsgUpdateStockDataResponse{} }
+func (m *MsgUpdateStockDataResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgUpdateStockDataResponse) ProtoMessage()    {}
+func (*MsgUpdateStockDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{3}
+}
+func (m *MsgUpdateStockDataResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgUpdateStockDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgUpdateStockDataResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgUpdateStockDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgUpdateStockDataResponse.Merge(m, src)
+}
+func (m *MsgUpdateStockDataResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgUpdateStockDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgUpdateStockDataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgUpdateStockDataResponse proto.InternalMessageInfo
+
+type MsgDeleteStockData struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Index   string `protobuf:"bytes,2,opt,name=index,proto3" json:"index,omitempty"`
+}
+
+func (m *MsgDeleteStockData) Reset()         { *m = MsgDeleteStockData{} }
+func (m *MsgDeleteStockData) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStockData) ProtoMessage()    {}
+func (*MsgDeleteStockData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{4}
+}
+func (m *MsgDeleteStockData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStockData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStockData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStockData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStockData.Merge(m, src)
+}
+func (m *MsgDeleteStockData) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStockData) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStockData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStockData proto.InternalMessageInfo
+
+func (m *MsgDeleteStockData) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteStockData) GetIndex() string {
+	if m != nil {
+		return m.Index
+	}
+	return ""
+}
+
+type MsgDeleteStockDataResponse struct {
+}
+
+func (m *MsgDeleteStockDataResponse) Reset()         { *m = MsgDeleteStockDataResponse{} }
+func (m *MsgDeleteStockDataResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStockDataResponse) ProtoMessage()    {}
+func (*MsgDeleteStockDataResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{5}
+}
+func (m *MsgDeleteStockDataResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStockDataResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStockDataResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStockDataResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStockDataResponse.Merge(m, src)
+}
+func (m *MsgDeleteStockDataResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStockDataResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStockDataResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStockDataResponse proto.InternalMessageInfo
+
 type MsgCreateUser struct {
 	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Name    string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
@@ -37,7 +317,7 @@ func (m *MsgCreateUser) Reset()         { *m = MsgCreateUser{} }
 func (m *MsgCreateUser) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateUser) ProtoMessage()    {}
 func (*MsgCreateUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{0}
+	return fileDescriptor_5fcd640ea230c639, []int{6}
 }
 func (m *MsgCreateUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -87,7 +367,7 @@ func (m *MsgCreateUserResponse) Reset()         { *m = MsgCreateUserResponse{} }
 func (m *MsgCreateUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateUserResponse) ProtoMessage()    {}
 func (*MsgCreateUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{1}
+	return fileDescriptor_5fcd640ea230c639, []int{7}
 }
 func (m *MsgCreateUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -125,7 +405,7 @@ func (m *MsgUpdateUser) Reset()         { *m = MsgUpdateUser{} }
 func (m *MsgUpdateUser) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateUser) ProtoMessage()    {}
 func (*MsgUpdateUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{2}
+	return fileDescriptor_5fcd640ea230c639, []int{8}
 }
 func (m *MsgUpdateUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -175,7 +455,7 @@ func (m *MsgUpdateUserResponse) Reset()         { *m = MsgUpdateUserResponse{} }
 func (m *MsgUpdateUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateUserResponse) ProtoMessage()    {}
 func (*MsgUpdateUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{3}
+	return fileDescriptor_5fcd640ea230c639, []int{9}
 }
 func (m *MsgUpdateUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -213,7 +493,7 @@ func (m *MsgDeleteUser) Reset()         { *m = MsgDeleteUser{} }
 func (m *MsgDeleteUser) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteUser) ProtoMessage()    {}
 func (*MsgDeleteUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{4}
+	return fileDescriptor_5fcd640ea230c639, []int{10}
 }
 func (m *MsgDeleteUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -263,7 +543,7 @@ func (m *MsgDeleteUserResponse) Reset()         { *m = MsgDeleteUserResponse{} }
 func (m *MsgDeleteUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteUserResponse) ProtoMessage()    {}
 func (*MsgDeleteUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{5}
+	return fileDescriptor_5fcd640ea230c639, []int{11}
 }
 func (m *MsgDeleteUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -293,6 +573,12 @@ func (m *MsgDeleteUserResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgDeleteUserResponse proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterType((*MsgCreateStockData)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockData")
+	proto.RegisterType((*MsgCreateStockDataResponse)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockDataResponse")
+	proto.RegisterType((*MsgUpdateStockData)(nil), "chainstockproject.blockchain.blockchain.MsgUpdateStockData")
+	proto.RegisterType((*MsgUpdateStockDataResponse)(nil), "chainstockproject.blockchain.blockchain.MsgUpdateStockDataResponse")
+	proto.RegisterType((*MsgDeleteStockData)(nil), "chainstockproject.blockchain.blockchain.MsgDeleteStockData")
+	proto.RegisterType((*MsgDeleteStockDataResponse)(nil), "chainstockproject.blockchain.blockchain.MsgDeleteStockDataResponse")
 	proto.RegisterType((*MsgCreateUser)(nil), "chainstockproject.blockchain.blockchain.MsgCreateUser")
 	proto.RegisterType((*MsgCreateUserResponse)(nil), "chainstockproject.blockchain.blockchain.MsgCreateUserResponse")
 	proto.RegisterType((*MsgUpdateUser)(nil), "chainstockproject.blockchain.blockchain.MsgUpdateUser")
@@ -304,25 +590,34 @@ func init() {
 func init() { proto.RegisterFile("blockchain/tx.proto", fileDescriptor_5fcd640ea230c639) }
 
 var fileDescriptor_5fcd640ea230c639 = []byte{
-	// 283 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x12, 0x4e, 0xca, 0xc9, 0x4f,
-	0xce, 0x4e, 0xce, 0x48, 0xcc, 0xcc, 0xd3, 0x2f, 0xa9, 0xd0, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17,
-	0x52, 0x07, 0xf3, 0x8b, 0x4b, 0xf2, 0x93, 0xb3, 0x0b, 0x8a, 0xf2, 0xb3, 0x52, 0x93, 0x4b, 0xf4,
-	0x10, 0xca, 0x90, 0x98, 0x52, 0xa2, 0x48, 0xba, 0x4b, 0x8b, 0x53, 0x8b, 0x20, 0xfa, 0x95, 0x6c,
-	0xb9, 0x78, 0x7d, 0x8b, 0xd3, 0x9d, 0x8b, 0x52, 0x13, 0x4b, 0x52, 0x43, 0x8b, 0x53, 0x8b, 0x84,
-	0x24, 0xb8, 0xd8, 0x93, 0x41, 0xbc, 0xfc, 0x22, 0x09, 0x46, 0x05, 0x46, 0x0d, 0xce, 0x20, 0x18,
-	0x57, 0x48, 0x88, 0x8b, 0x25, 0x2f, 0x31, 0x37, 0x55, 0x82, 0x09, 0x2c, 0x0c, 0x66, 0x2b, 0x89,
-	0x73, 0x89, 0xa2, 0x68, 0x0f, 0x4a, 0x2d, 0x2e, 0xc8, 0xcf, 0x2b, 0x4e, 0x85, 0x9a, 0x1b, 0x5a,
-	0x90, 0x42, 0x89, 0xb9, 0x08, 0xed, 0x68, 0xe6, 0xba, 0xa4, 0xe6, 0xa4, 0x52, 0x60, 0x2e, 0x42,
-	0x3b, 0xcc, 0x5c, 0xa3, 0x59, 0xcc, 0x5c, 0xcc, 0xbe, 0xc5, 0xe9, 0x42, 0x2d, 0x8c, 0x5c, 0x5c,
-	0x48, 0xa1, 0x61, 0xa6, 0x47, 0x64, 0xf8, 0xea, 0xa1, 0x04, 0x83, 0x94, 0x1d, 0x79, 0xfa, 0x60,
-	0xce, 0x01, 0x3b, 0x03, 0x29, 0xf0, 0x48, 0x72, 0x06, 0x42, 0x1f, 0x69, 0xce, 0xc0, 0x0c, 0x6d,
-	0xb0, 0x33, 0x90, 0xc2, 0x9a, 0x24, 0x67, 0x20, 0xf4, 0x91, 0xe6, 0x0c, 0xcc, 0xc8, 0x71, 0x0a,
-	0x3d, 0xf1, 0x48, 0x8e, 0xf1, 0xc2, 0x23, 0x39, 0xc6, 0x07, 0x8f, 0xe4, 0x18, 0x27, 0x3c, 0x96,
-	0x63, 0xb8, 0xf0, 0x58, 0x8e, 0xe1, 0xc6, 0x63, 0x39, 0x86, 0x28, 0xeb, 0xf4, 0xcc, 0x92, 0x8c,
-	0xd2, 0x24, 0xbd, 0xe4, 0xfc, 0x5c, 0x7d, 0x84, 0x1d, 0xba, 0x50, 0x4b, 0xf4, 0x91, 0xd2, 0x7c,
-	0x05, 0x32, 0xa7, 0xa4, 0xb2, 0x20, 0xb5, 0x38, 0x89, 0x0d, 0x9c, 0x05, 0x8c, 0x01, 0x01, 0x00,
-	0x00, 0xff, 0xff, 0x8b, 0xa8, 0xba, 0xf6, 0x59, 0x03, 0x00, 0x00,
+	// 423 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x95, 0xb1, 0x4f, 0x02, 0x31,
+	0x14, 0xc6, 0xa9, 0x28, 0xc6, 0x1a, 0x63, 0x52, 0x25, 0x5e, 0x4e, 0x73, 0x21, 0x2c, 0xb2, 0x78,
+	0x24, 0x98, 0xb0, 0x10, 0x1d, 0x84, 0xb8, 0xb1, 0x60, 0x58, 0x5c, 0x4c, 0x39, 0x1a, 0x40, 0xe0,
+	0x7a, 0xb9, 0x96, 0x04, 0x77, 0x47, 0x07, 0x13, 0xff, 0x29, 0x47, 0x46, 0x07, 0x07, 0x03, 0xff,
+	0x88, 0xa1, 0x77, 0xc7, 0x95, 0x5e, 0x30, 0x14, 0x16, 0xb7, 0x7b, 0xa5, 0xdf, 0xf7, 0x7e, 0x7d,
+	0x7c, 0x4d, 0xe1, 0x49, 0x6b, 0x40, 0x9d, 0xbe, 0xd3, 0xc5, 0x3d, 0xb7, 0xc8, 0xc7, 0xb6, 0xe7,
+	0x53, 0x4e, 0xd1, 0xa5, 0xa8, 0x19, 0xa7, 0x4e, 0xdf, 0xf3, 0xe9, 0x33, 0x71, 0xb8, 0x1d, 0x6f,
+	0x93, 0x3e, 0xcd, 0x73, 0x49, 0x2d, 0xb6, 0x3f, 0xb5, 0x31, 0xc7, 0x81, 0x8b, 0x99, 0x95, 0x7e,
+	0x1c, 0x31, 0xe2, 0x07, 0xcb, 0xf9, 0x37, 0x00, 0x51, 0x9d, 0x75, 0xaa, 0x3e, 0xc1, 0x9c, 0x3c,
+	0xcc, 0x45, 0x35, 0xcc, 0x31, 0x32, 0xe0, 0xbe, 0x33, 0x5f, 0xa2, 0xbe, 0x01, 0x72, 0xa0, 0x70,
+	0xd0, 0x88, 0x4a, 0x74, 0x0a, 0xf7, 0x7a, 0x6e, 0x9b, 0x8c, 0x8d, 0x1d, 0xb1, 0x1e, 0x14, 0xe8,
+	0x1e, 0x66, 0x44, 0x47, 0x66, 0xa4, 0x73, 0xe9, 0xc2, 0x61, 0xc9, 0xb6, 0xd7, 0x84, 0xb6, 0x45,
+	0xcf, 0x46, 0xa8, 0xce, 0x5f, 0x40, 0x33, 0x49, 0xd3, 0x20, 0xcc, 0xa3, 0x2e, 0x23, 0x11, 0x6c,
+	0xd3, 0x6b, 0xff, 0x23, 0x58, 0x85, 0x66, 0x01, 0x5b, 0x13, 0xac, 0x35, 0x32, 0x20, 0x5b, 0xb0,
+	0x86, 0x3d, 0x14, 0x97, 0x45, 0x8f, 0x1b, 0x78, 0xb4, 0x18, 0x57, 0x93, 0x11, 0xff, 0x0f, 0x7b,
+	0x04, 0x77, 0x5d, 0x3c, 0x24, 0xa1, 0xbb, 0xf8, 0xce, 0x9f, 0xc1, 0xec, 0x92, 0x5c, 0xf1, 0x0d,
+	0x4e, 0xb6, 0xb1, 0x6f, 0x2c, 0x57, 0x7c, 0x83, 0xd3, 0x6c, 0xec, 0x1b, 0xcb, 0x23, 0xdf, 0xd2,
+	0x77, 0x06, 0xa6, 0xeb, 0xac, 0x83, 0x3e, 0x00, 0x3c, 0x56, 0xa3, 0x5c, 0x59, 0xfb, 0xdf, 0x4d,
+	0x26, 0xcf, 0xac, 0x6e, 0x21, 0x8e, 0xe8, 0x04, 0x95, 0x9a, 0x59, 0x2d, 0x2a, 0x45, 0xac, 0x47,
+	0xb5, 0x22, 0x9f, 0x82, 0x4a, 0x4d, 0xa7, 0x16, 0x95, 0x22, 0xd6, 0xa3, 0x5a, 0x91, 0x68, 0xf4,
+	0x0a, 0x20, 0x94, 0xf2, 0x5c, 0xd6, 0x9f, 0xff, 0x5c, 0x67, 0xde, 0x6e, 0xa6, 0x5b, 0xc2, 0x90,
+	0xe2, 0x5f, 0xd6, 0x1f, 0xb8, 0x3e, 0x46, 0xf2, 0xbe, 0x08, 0x0c, 0xe9, 0xb6, 0x94, 0xf5, 0x27,
+	0xac, 0x8f, 0x91, 0xbc, 0x5e, 0x77, 0xcd, 0xcf, 0xa9, 0x05, 0x26, 0x53, 0x0b, 0xfc, 0x4c, 0x2d,
+	0xf0, 0x3e, 0xb3, 0x52, 0x93, 0x99, 0x95, 0xfa, 0x9a, 0x59, 0xa9, 0xc7, 0x4a, 0xa7, 0xc7, 0xbb,
+	0xa3, 0x96, 0xed, 0xd0, 0x61, 0x31, 0xee, 0x71, 0x15, 0x36, 0x29, 0x4a, 0x6f, 0xce, 0x58, 0x2e,
+	0xf8, 0x8b, 0x47, 0x58, 0x2b, 0x23, 0x9e, 0xa0, 0xeb, 0xdf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9c,
+	0x39, 0xd1, 0x30, 0xf6, 0x06, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -338,6 +633,9 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
 	// this line is used by starport scaffolding # proto/tx/rpc
+	CreateStockData(ctx context.Context, in *MsgCreateStockData, opts ...grpc.CallOption) (*MsgCreateStockDataResponse, error)
+	UpdateStockData(ctx context.Context, in *MsgUpdateStockData, opts ...grpc.CallOption) (*MsgUpdateStockDataResponse, error)
+	DeleteStockData(ctx context.Context, in *MsgDeleteStockData, opts ...grpc.CallOption) (*MsgDeleteStockDataResponse, error)
 	CreateUser(ctx context.Context, in *MsgCreateUser, opts ...grpc.CallOption) (*MsgCreateUserResponse, error)
 	UpdateUser(ctx context.Context, in *MsgUpdateUser, opts ...grpc.CallOption) (*MsgUpdateUserResponse, error)
 	DeleteUser(ctx context.Context, in *MsgDeleteUser, opts ...grpc.CallOption) (*MsgDeleteUserResponse, error)
@@ -349,6 +647,33 @@ type msgClient struct {
 
 func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
+}
+
+func (c *msgClient) CreateStockData(ctx context.Context, in *MsgCreateStockData, opts ...grpc.CallOption) (*MsgCreateStockDataResponse, error) {
+	out := new(MsgCreateStockDataResponse)
+	err := c.cc.Invoke(ctx, "/chainstockproject.blockchain.blockchain.Msg/CreateStockData", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) UpdateStockData(ctx context.Context, in *MsgUpdateStockData, opts ...grpc.CallOption) (*MsgUpdateStockDataResponse, error) {
+	out := new(MsgUpdateStockDataResponse)
+	err := c.cc.Invoke(ctx, "/chainstockproject.blockchain.blockchain.Msg/UpdateStockData", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteStockData(ctx context.Context, in *MsgDeleteStockData, opts ...grpc.CallOption) (*MsgDeleteStockDataResponse, error) {
+	out := new(MsgDeleteStockDataResponse)
+	err := c.cc.Invoke(ctx, "/chainstockproject.blockchain.blockchain.Msg/DeleteStockData", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *msgClient) CreateUser(ctx context.Context, in *MsgCreateUser, opts ...grpc.CallOption) (*MsgCreateUserResponse, error) {
@@ -381,6 +706,9 @@ func (c *msgClient) DeleteUser(ctx context.Context, in *MsgDeleteUser, opts ...g
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// this line is used by starport scaffolding # proto/tx/rpc
+	CreateStockData(context.Context, *MsgCreateStockData) (*MsgCreateStockDataResponse, error)
+	UpdateStockData(context.Context, *MsgUpdateStockData) (*MsgUpdateStockDataResponse, error)
+	DeleteStockData(context.Context, *MsgDeleteStockData) (*MsgDeleteStockDataResponse, error)
 	CreateUser(context.Context, *MsgCreateUser) (*MsgCreateUserResponse, error)
 	UpdateUser(context.Context, *MsgUpdateUser) (*MsgUpdateUserResponse, error)
 	DeleteUser(context.Context, *MsgDeleteUser) (*MsgDeleteUserResponse, error)
@@ -390,6 +718,15 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
+func (*UnimplementedMsgServer) CreateStockData(ctx context.Context, req *MsgCreateStockData) (*MsgCreateStockDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStockData not implemented")
+}
+func (*UnimplementedMsgServer) UpdateStockData(ctx context.Context, req *MsgUpdateStockData) (*MsgUpdateStockDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateStockData not implemented")
+}
+func (*UnimplementedMsgServer) DeleteStockData(ctx context.Context, req *MsgDeleteStockData) (*MsgDeleteStockDataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStockData not implemented")
+}
 func (*UnimplementedMsgServer) CreateUser(ctx context.Context, req *MsgCreateUser) (*MsgCreateUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
 }
@@ -402,6 +739,60 @@ func (*UnimplementedMsgServer) DeleteUser(ctx context.Context, req *MsgDeleteUse
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
+}
+
+func _Msg_CreateStockData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateStockData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateStockData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chainstockproject.blockchain.blockchain.Msg/CreateStockData",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateStockData(ctx, req.(*MsgCreateStockData))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_UpdateStockData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgUpdateStockData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).UpdateStockData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chainstockproject.blockchain.blockchain.Msg/UpdateStockData",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).UpdateStockData(ctx, req.(*MsgUpdateStockData))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteStockData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteStockData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteStockData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chainstockproject.blockchain.blockchain.Msg/DeleteStockData",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteStockData(ctx, req.(*MsgDeleteStockData))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Msg_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -463,6 +854,18 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "CreateStockData",
+			Handler:    _Msg_CreateStockData_Handler,
+		},
+		{
+			MethodName: "UpdateStockData",
+			Handler:    _Msg_UpdateStockData_Handler,
+		},
+		{
+			MethodName: "DeleteStockData",
+			Handler:    _Msg_DeleteStockData_Handler,
+		},
+		{
 			MethodName: "CreateUser",
 			Handler:    _Msg_CreateUser_Handler,
 		},
@@ -477,6 +880,214 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "blockchain/tx.proto",
+}
+
+func (m *MsgCreateStockData) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStockData) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStockData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Stocks) > 0 {
+		for iNdEx := len(m.Stocks) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Stocks[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintTx(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
+		}
+	}
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateStockDataResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStockDataResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStockDataResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateStockData) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateStockData) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateStockData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Stocks) > 0 {
+		for iNdEx := len(m.Stocks) - 1; iNdEx >= 0; iNdEx-- {
+			{
+				size, err := m.Stocks[iNdEx].MarshalToSizedBuffer(dAtA[:i])
+				if err != nil {
+					return 0, err
+				}
+				i -= size
+				i = encodeVarintTx(dAtA, i, uint64(size))
+			}
+			i--
+			dAtA[i] = 0x1a
+		}
+	}
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgUpdateStockDataResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgUpdateStockDataResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgUpdateStockDataResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStockData) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStockData) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStockData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Index) > 0 {
+		i -= len(m.Index)
+		copy(dAtA[i:], m.Index)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Index)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStockDataResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStockDataResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStockDataResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
 }
 
 func (m *MsgCreateUser) Marshal() (dAtA []byte, err error) {
@@ -670,6 +1281,96 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *MsgCreateStockData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if len(m.Stocks) > 0 {
+		for _, e := range m.Stocks {
+			l = e.Size()
+			n += 1 + l + sovTx(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *MsgCreateStockDataResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgUpdateStockData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	if len(m.Stocks) > 0 {
+		for _, e := range m.Stocks {
+			l = e.Size()
+			n += 1 + l + sovTx(uint64(l))
+		}
+	}
+	return n
+}
+
+func (m *MsgUpdateStockDataResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteStockData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Index)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteStockDataResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
 func (m *MsgCreateUser) Size() (n int) {
 	if m == nil {
 		return 0
@@ -753,6 +1454,566 @@ func sovTx(x uint64) (n int) {
 }
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *MsgCreateStockData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStockData: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStockData: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Stocks", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Stocks = append(m.Stocks, &Stock{})
+			if err := m.Stocks[len(m.Stocks)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateStockDataResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStockDataResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStockDataResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateStockData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateStockData: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateStockData: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Stocks", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Stocks = append(m.Stocks, &Stock{})
+			if err := m.Stocks[len(m.Stocks)-1].Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgUpdateStockDataResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgUpdateStockDataResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgUpdateStockDataResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStockData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStockData: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStockData: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Index", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Index = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStockDataResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStockDataResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStockDataResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *MsgCreateUser) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
