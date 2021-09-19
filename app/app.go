@@ -83,6 +83,7 @@ import (
 	upgradetypes "github.com/cosmos/cosmos-sdk/x/upgrade/types"
 	tmjson "github.com/tendermint/tendermint/libs/json"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 	blockchainmodule "github.com/chainstock-project/blockchain/x/blockchain"
 	blockchainmodulekeeper "github.com/chainstock-project/blockchain/x/blockchain/keeper"
@@ -151,6 +152,7 @@ var (
 		govtypes.ModuleName:            {authtypes.Burner},
 		ibctransfertypes.ModuleName:    {authtypes.Minter, authtypes.Burner},
 		// this line is used by starport scaffolding # stargate/app/maccPerms
+		blockchainmoduletypes.ModuleName: {authtypes.Minter, authtypes.Burner},
 	}
 )
 
@@ -342,6 +344,7 @@ func New(
 		appCodec,
 		keys[blockchainmoduletypes.StoreKey],
 		keys[blockchainmoduletypes.MemStoreKey],
+		app.BankKeeper,
 	)
 	blockchainModule := blockchainmodule.NewAppModule(appCodec, app.BlockchainKeeper)
 

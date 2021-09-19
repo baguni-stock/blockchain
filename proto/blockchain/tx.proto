@@ -2,12 +2,33 @@ syntax = "proto3";
 package chainstockproject.blockchain.blockchain;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "blockchain/user.proto";
 
 option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types";
 
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateUser(MsgCreateUser) returns (MsgCreateUserResponse);
+  rpc UpdateUser(MsgUpdateUser) returns (MsgUpdateUserResponse);
+  rpc DeleteUser(MsgDeleteUser) returns (MsgDeleteUserResponse);
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateUser {
+  string creator = 1;
+  string name = 2;
+}
+message MsgCreateUserResponse { }
+
+message MsgUpdateUser {
+  string creator = 1;
+  string name = 2;
+}
+message MsgUpdateUserResponse { }
+
+message MsgDeleteUser {
+  string creator = 1;
+  string name = 2;
+}
+message MsgDeleteUserResponse { }
