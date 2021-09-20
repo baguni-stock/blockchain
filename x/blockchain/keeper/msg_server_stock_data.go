@@ -1,0 +1,87 @@
+package keeper
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/chainstock-project/blockchain/x/blockchain/types"
+	sdk "github.com/cosmos/cosmos-sdk/types"
+	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+)
+
+func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateStockData) (*types.MsgCreateStockDataResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	// Check if the value already exists
+	_, isFound := k.GetStockData(ctx, msg.Date)
+	if isFound {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
+	}
+
+	root_user, isFound := k.GetUser(ctx, "root")
+	if isFound {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("user %v not exists", "root"))
+	}
+
+	if root_user.Creator != msg.Creator {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "incorrect root user")
+	}
+
+	var stockData = types.StockData{
+		Date:      msg.Date,
+		Creator:   msg.Creator,
+		StockType: msg.StockType,
+		Stocks:    msg.Stocks,
+	}
+
+	k.SetStockData(
+		ctx,
+		stockData,
+	)
+	return &types.MsgCreateStockDataResponse{}, nil
+}
+
+func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateStockData) (*types.MsgUpdateStockDataResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	// Check if the value exists
+	valFound, isFound := k.GetStockData(ctx, msg.Date)
+	if !isFound {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
+	}
+
+	// Checks if the the msg sender is the same as the current owner
+	if msg.Creator != valFound.Creator {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
+	}
+
+	var stockData = types.StockData{
+		Date:      msg.Date,
+		Creator:   msg.Creator,
+		StockType: msg.StockType,
+		Stocks:    msg.Stocks,
+	}
+
+	k.SetStockData(ctx, stockData)
+
+	return &types.MsgUpdateStockDataResponse{}, nil
+}
+
+func (k msgServer) DeleteStockData(goCtx context.Context, msg *types.MsgDeleteStockData) (*types.MsgDeleteStockDataResponse, error) {
+	ctx := sdk.UnwrapSDKContext(goCtx)
+
+	// Check if the value exists
+	valFound, isFound := k.GetStockData(ctx, msg.Date)
+	if !isFound {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
+	}
+
+	// Checks if the the msg sender is the same as the current owner
+	if msg.Creator != valFound.Creator {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
+	}
+
+	k.RemoveStockData(ctx, msg.Date)
+
+	return &types.MsgDeleteStockDataResponse{}, nil
+}

@@ -63,7 +63,7 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 	// Check if the value exists
 	valFound, isFound := k.GetUser(ctx, msg.Name)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("index %v not set", msg.Name))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Name))
 	}
 
 	// Checks if the the msg sender is the same as the current owner
@@ -87,7 +87,7 @@ func (k msgServer) DeleteUser(goCtx context.Context, msg *types.MsgDeleteUser) (
 	// Check if the value exists
 	valFound, isFound := k.GetUser(ctx, msg.Name)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("index %v not set", msg.Name))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Name))
 	}
 
 	// Checks if the the msg sender is the same as the current owner

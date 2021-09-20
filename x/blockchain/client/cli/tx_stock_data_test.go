@@ -14,13 +14,13 @@ import (
 	"github.com/chainstock-project/blockchain/x/blockchain/client/cli"
 )
 
-func TestCreateUser(t *testing.T) {
+func TestCreateStockData(t *testing.T) {
 	net := network.New(t)
 	val := net.Validators[0]
 	ctx := val.ClientCtx
 	id := "0"
 
-	fields := []string{}
+	fields := []string{"xyz"}
 	for _, tc := range []struct {
 		desc string
 		id   string
@@ -44,7 +44,7 @@ func TestCreateUser(t *testing.T) {
 			args := []string{tc.id}
 			args = append(args, fields...)
 			args = append(args, tc.args...)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateUser(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateStockData(), args)
 			if tc.err != nil {
 				require.ErrorIs(t, err, tc.err)
 			} else {
@@ -57,13 +57,13 @@ func TestCreateUser(t *testing.T) {
 	}
 }
 
-func TestUpdateUser(t *testing.T) {
+func TestUpdateStockData(t *testing.T) {
 	net := network.New(t)
 	val := net.Validators[0]
 	ctx := val.ClientCtx
 	id := "0"
 
-	fields := []string{}
+	fields := []string{"xyz"}
 	common := []string{
 		fmt.Sprintf("--%s=%s", flags.FlagFrom, val.Address.String()),
 		fmt.Sprintf("--%s=true", flags.FlagSkipConfirmation),
@@ -73,7 +73,7 @@ func TestUpdateUser(t *testing.T) {
 	args := []string{id}
 	args = append(args, fields...)
 	args = append(args, common...)
-	_, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateUser(), args)
+	_, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateStockData(), args)
 	require.NoError(t, err)
 
 	for _, tc := range []struct {
@@ -100,7 +100,7 @@ func TestUpdateUser(t *testing.T) {
 			args := []string{tc.id}
 			args = append(args, fields...)
 			args = append(args, tc.args...)
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdUpdateUser(), args)
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdUpdateStockData(), args)
 			if tc.err != nil {
 				require.ErrorIs(t, err, tc.err)
 			} else {
@@ -113,14 +113,14 @@ func TestUpdateUser(t *testing.T) {
 	}
 }
 
-func TestDeleteUser(t *testing.T) {
+func TestDeleteStockData(t *testing.T) {
 	net := network.New(t)
 
 	val := net.Validators[0]
 	ctx := val.ClientCtx
 	id := "0"
 
-	fields := []string{}
+	fields := []string{"xyz"}
 	common := []string{
 		fmt.Sprintf("--%s=%s", flags.FlagFrom, val.Address.String()),
 		fmt.Sprintf("--%s=true", flags.FlagSkipConfirmation),
@@ -130,7 +130,7 @@ func TestDeleteUser(t *testing.T) {
 	args := []string{id}
 	args = append(args, fields...)
 	args = append(args, common...)
-	_, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateUser(), args)
+	_, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdCreateStockData(), args)
 	require.NoError(t, err)
 
 	for _, tc := range []struct {
@@ -154,7 +154,7 @@ func TestDeleteUser(t *testing.T) {
 	} {
 		tc := tc
 		t.Run(tc.desc, func(t *testing.T) {
-			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdDeleteUser(), append([]string{tc.id}, tc.args...))
+			out, err := clitestutil.ExecTestCLICmd(ctx, cli.CmdDeleteStockData(), append([]string{tc.id}, tc.args...))
 			if tc.err != nil {
 				require.ErrorIs(t, err, tc.err)
 			} else {
