@@ -24,13 +24,14 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 	}
 
 	if root_user.Creator != msg.Creator {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "only root user create stock_data")
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "incorrect root user")
 	}
 
 	var stockData = types.StockData{
-		Date:    msg.Date,
-		Creator: msg.Creator,
-		Stocks:  msg.Stocks,
+		Date:      msg.Date,
+		Creator:   msg.Creator,
+		StockType: msg.StockType,
+		Stocks:    msg.Stocks,
 	}
 
 	k.SetStockData(
@@ -55,9 +56,10 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	}
 
 	var stockData = types.StockData{
-		Date:    msg.Date,
-		Creator: msg.Creator,
-		Stocks:  msg.Stocks,
+		Date:      msg.Date,
+		Creator:   msg.Creator,
+		StockType: msg.StockType,
+		Stocks:    msg.Stocks,
 	}
 
 	k.SetStockData(ctx, stockData)

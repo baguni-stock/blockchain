@@ -22,14 +22,16 @@ service Msg {
 message MsgCreateStockData {
   string creator = 1;
   string date = 2;
-  repeated Stock stocks = 3; 
+  string stock_type = 3;
+  repeated Stock stocks = 4; 
 }
 message MsgCreateStockDataResponse { }
 
 message MsgUpdateStockData {
   string creator = 1;
   string date = 2;
-  repeated Stock stocks = 3; 
+  string stock_type = 3;
+  repeated Stock stocks =4;
 }
 message MsgUpdateStockDataResponse { }
 

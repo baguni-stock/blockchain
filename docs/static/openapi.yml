@@ -23,6 +23,8 @@ paths:
                       type: string
                     date:
                       type: string
+                    stockType:
+                      type: string
                     stocks:
                       type: array
                       items:
@@ -142,6 +144,8 @@ paths:
                   creator:
                     type: string
                   date:
+                    type: string
+                  stockType:
                     type: string
                   stocks:
                     type: array
@@ -19455,6 +19459,8 @@ definitions:
               type: string
             date:
               type: string
+            stockType:
+              type: string
             stocks:
               type: array
               items:
@@ -19536,6 +19542,8 @@ definitions:
             type: string
           date:
             type: string
+          stockType:
+            type: string
           stocks:
             type: array
             items:
@@ -19568,6 +19576,8 @@ definitions:
       creator:
         type: string
       date:
+        type: string
+      stockType:
         type: string
       stocks:
         type: array

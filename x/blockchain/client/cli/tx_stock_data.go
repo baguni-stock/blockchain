@@ -13,14 +13,14 @@ import (
 
 func CmdCreateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-stock-data [date] [stocks]",
+		Use:   "create-stock-data [date] [stock_type] [stocks]",
 		Short: "Create a new stock-data",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			date := args[0]
-
+			stock_type := args[1]
 			var stocks []*types.Stock
-			for i := 1; i < len(args); i++ {
+			for i := 2; i < len(args); i++ {
 				stock_split := strings.Split(args[i], "=")
 				stock := types.Stock{
 					Code:   stock_split[0],
@@ -35,7 +35,7 @@ func CmdCreateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stocks)
+			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stock_type, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -55,6 +55,7 @@ func CmdUpdateStockData() *cobra.Command {
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			date := args[0]
+			stock_type := args[1]
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i++ {
@@ -72,7 +73,7 @@ func CmdUpdateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stocks)
+			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stock_type, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
