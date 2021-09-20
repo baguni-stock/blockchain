@@ -5,8 +5,8 @@ import (
 	// this line is used by starport scaffolding # ibc/genesistype/import
 )
 
-// DefaultIndex is the default capability global name
-const DefaultIndex uint64 = 1
+// DefaultDate is the default capability global name
+const DefaultDate uint64 = 1
 
 // DefaultGenesis returns the default Capability genesis state
 func DefaultGenesis() *GenesisState {
@@ -25,22 +25,22 @@ func (gs GenesisState) Validate() error {
 
 	// this line is used by starport scaffolding # genesis/types/validate
 	// Check for duplicated index in stockData
-	stockDataIndexMap := make(map[string]bool)
+	stockDataDateMap := make(map[string]bool)
 
 	for _, elem := range gs.StockDataList {
-		if _, ok := stockDataIndexMap[elem.Index]; ok {
+		if _, ok := stockDataDateMap[elem.Date]; ok {
 			return fmt.Errorf("duplicated index for stockData")
 		}
-		stockDataIndexMap[elem.Index] = true
+		stockDataDateMap[elem.Date] = true
 	}
 	// Check for duplicated name in user
-	userIndexMap := make(map[string]bool)
+	userDateMap := make(map[string]bool)
 
 	for _, elem := range gs.UserList {
-		if _, ok := userIndexMap[elem.Name]; ok {
+		if _, ok := userDateMap[elem.Name]; ok {
 			return fmt.Errorf("duplicated name for user")
 		}
-		userIndexMap[elem.Name] = true
+		userDateMap[elem.Name] = true
 	}
 
 	return nil

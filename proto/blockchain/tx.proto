@@ -21,21 +21,21 @@ service Msg {
 // this line is used by starport scaffolding # proto/tx/message
 message MsgCreateStockData {
   string creator = 1;
-  string index = 2;
+  string date = 2;
   repeated Stock stocks = 3; 
 }
 message MsgCreateStockDataResponse { }
 
 message MsgUpdateStockData {
   string creator = 1;
-  string index = 2;
+  string date = 2;
   repeated Stock stocks = 3; 
 }
 message MsgUpdateStockDataResponse { }
 
 message MsgDeleteStockData {
   string creator = 1;
-  string index = 2;
+  string date = 2;
 }
 message MsgDeleteStockDataResponse { }
 

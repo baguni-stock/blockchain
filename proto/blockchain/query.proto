@@ -13,9 +13,9 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 service Query {
     // this line is used by starport scaffolding # 2
 
-	// Queries a stockData by index.
+	// Queries a stockData by date.
 	rpc StockData(QueryGetStockDataRequest) returns (QueryGetStockDataResponse) {
-		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockData/{index}";
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockData/{date}";
 	}
 
 	// Queries a list of stockData items.
@@ -38,7 +38,7 @@ service Query {
 
 // this line is used by starport scaffolding # 3
 message QueryGetStockDataRequest {
-	string index = 1;
+	string date = 1;
 }
 
 message QueryGetStockDataResponse {

@@ -44,7 +44,7 @@ func CmdListStockData() *cobra.Command {
 
 func CmdShowStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-stock-data [index]",
+		Use:   "show-stock-data [date]",
 		Short: "shows a stock-data",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -53,7 +53,7 @@ func CmdShowStockData() *cobra.Command {
 			queryClient := types.NewQueryClient(clientCtx)
 
 			params := &types.QueryGetStockDataRequest{
-				Index: args[0],
+				Date: args[0],
 			}
 
 			res, err := queryClient.StockData(context.Background(), params)

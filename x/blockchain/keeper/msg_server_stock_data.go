@@ -13,13 +13,22 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value already exists
-	_, isFound := k.GetStockData(ctx, msg.Index)
+	_, isFound := k.GetStockData(ctx, msg.Date)
 	if isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("index %v already set", msg.Index))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
+	}
+
+	root_user, isFound := k.GetUser(ctx, "root")
+	if isFound {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("user %v not exists", "root"))
+	}
+
+	if root_user.Creator != msg.Creator {
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "only root user create stock_data")
 	}
 
 	var stockData = types.StockData{
-		Index:   msg.Index,
+		Date:    msg.Date,
 		Creator: msg.Creator,
 		Stocks:  msg.Stocks,
 	}
@@ -35,9 +44,9 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value exists
-	valFound, isFound := k.GetStockData(ctx, msg.Index)
+	valFound, isFound := k.GetStockData(ctx, msg.Date)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("index %v not set", msg.Index))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
 	}
 
 	// Checks if the the msg sender is the same as the current owner
@@ -46,7 +55,7 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	}
 
 	var stockData = types.StockData{
-		Index:   msg.Index,
+		Date:    msg.Date,
 		Creator: msg.Creator,
 		Stocks:  msg.Stocks,
 	}
@@ -60,9 +69,9 @@ func (k msgServer) DeleteStockData(goCtx context.Context, msg *types.MsgDeleteSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value exists
-	valFound, isFound := k.GetStockData(ctx, msg.Index)
+	valFound, isFound := k.GetStockData(ctx, msg.Date)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("index %v not set", msg.Index))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
 	}
 
 	// Checks if the the msg sender is the same as the current owner
@@ -70,7 +79,7 @@ func (k msgServer) DeleteStockData(goCtx context.Context, msg *types.MsgDeleteSt
 		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
-	k.RemoveStockData(ctx, msg.Index)
+	k.RemoveStockData(ctx, msg.Date)
 
 	return &types.MsgDeleteStockDataResponse{}, nil
 }

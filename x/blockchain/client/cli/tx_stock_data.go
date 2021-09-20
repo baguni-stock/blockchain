@@ -13,11 +13,11 @@ import (
 
 func CmdCreateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-stock-data [index] [stocks]",
+		Use:   "create-stock-data [date] [stocks]",
 		Short: "Create a new stock-data",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			index := args[0]
+			date := args[0]
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i++ {
@@ -35,7 +35,7 @@ func CmdCreateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), index, stocks)
+			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -50,11 +50,11 @@ func CmdCreateStockData() *cobra.Command {
 
 func CmdUpdateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-stock-data [index] [stocks]",
+		Use:   "update-stock-data [date] [stocks]",
 		Short: "Update a stock-data",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			index := args[0]
+			date := args[0]
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i++ {
@@ -72,7 +72,7 @@ func CmdUpdateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), index, stocks)
+			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -87,18 +87,18 @@ func CmdUpdateStockData() *cobra.Command {
 
 func CmdDeleteStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "delete-stock-data [index]",
+		Use:   "delete-stock-data [date]",
 		Short: "Delete a stock-data",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			index := args[0]
+			date := args[0]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgDeleteStockData(clientCtx.GetFromAddress().String(), index)
+			msg := types.NewMsgDeleteStockData(clientCtx.GetFromAddress().String(), date)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

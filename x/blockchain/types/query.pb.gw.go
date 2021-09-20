@@ -44,15 +44,15 @@ func request_Query_StockData_0(ctx context.Context, marshaler runtime.Marshaler,
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["date"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "date")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Date, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "date", err)
 	}
 
 	msg, err := client.StockData(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -71,15 +71,15 @@ func local_request_Query_StockData_0(ctx context.Context, marshaler runtime.Mars
 		_   = err
 	)
 
-	val, ok = pathParams["index"]
+	val, ok = pathParams["date"]
 	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "index")
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "date")
 	}
 
-	protoReq.Index, err = runtime.String(val)
+	protoReq.Date, err = runtime.String(val)
 
 	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "index", err)
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "date", err)
 	}
 
 	msg, err := server.StockData(ctx, &protoReq)
@@ -436,7 +436,7 @@ func RegisterQueryHandlerClient(ctx context.Context, mux *runtime.ServeMux, clie
 }
 
 var (
-	pattern_Query_StockData_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"chainstock-project", "blockchain", "stockData", "index"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_Query_StockData_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"chainstock-project", "blockchain", "stockData", "date"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_Query_StockDataAll_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 1, 2, 2}, []string{"chainstock-project", "blockchain", "stockData"}, "", runtime.AssumeColonVerbOpt(true)))
 

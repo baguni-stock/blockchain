@@ -12,6 +12,6 @@ message Stock {
 
 message StockData {
   string creator = 1;
-  string index = 2;
+  string date = 2;
   repeated Stock stocks = 3; 
 }
