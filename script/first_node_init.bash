@@ -1,6 +1,11 @@
 #!/bin/bash
+#sudo yum -y install git
+#git clone https://github.com/chainstock-project/blockchain
+#cd blockchain
+#bash script/first_node_init.bash
+
 APP="blockchain"
-APP_DAEMON=$APP"d"
+APP_DAEMON="blockchaind"
 APP_HOME=$HOME/.$APP
 
 # go install
@@ -10,7 +15,7 @@ sudo tar -xzf go1.17.linux-amd64.tar.gz -C /usr/local
 rm -rf go1.17.linux-amd64.tar.gz
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-echo "export GOPATH=$GOPATH" > $HOME/.bash_profile
+echo "export GOPATH=$GOPATH" >> $HOME/.bash_profile
 echo "export PATH=$PATH" >> $HOME/.bash_profile
 mkdir $GOPATH
 mkdir $GOPATH/bin
@@ -21,9 +26,9 @@ mkdir $GOPATH/pkg
 make
 $APP_DAEMON keys add root --keyring-backend test
 ROOT_ADDRESS=$($APP_DAEMON keys show root -a --keyring-backend test)
-$APP_DAEMON init stock-chain --chain-id stock-chain
+$APP_DAEMON init first-node --chain-id stock-chain
 $APP_DAEMON add-genesis-account $ROOT_ADDRESS 110000000000stake
-$APP_DAEMON gentx root 10000000000stake --chain-id stock-chain
+$APP_DAEMON gentx root 10000000000stake --chain-id stock-chain --keyring-backend test
 $APP_DAEMON collect-gentxs
 sed -i 's/enable = false/enable = true/' $APP_HOME/config/app.toml
 
