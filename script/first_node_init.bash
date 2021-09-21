@@ -24,13 +24,14 @@ mkdir $GOPATH/pkg
 
 # blockchain app install
 make
+$APP_DAEMON init first-node --chain-id stock-chain
 $APP_DAEMON keys add root --keyring-backend test
 ROOT_ADDRESS=$($APP_DAEMON keys show root -a --keyring-backend test)
-$APP_DAEMON init first-node --chain-id stock-chain
 $APP_DAEMON add-genesis-account $ROOT_ADDRESS 110000000000stake
 $APP_DAEMON gentx root 10000000000stake --chain-id stock-chain --keyring-backend test
 $APP_DAEMON collect-gentxs
 sed -i 's/enable = false/enable = true/' $APP_HOME/config/app.toml
+sed -i 's,laddr = "tcp://127.0.0.1:26657",laddr = "tcp://0.0.0.0:26657",g' $APP_HOME/config/config.toml
 
 # service register
 sudo mkdir /var/log/$APP_DAEMON/
