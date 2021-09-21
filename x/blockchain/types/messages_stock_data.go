@@ -7,11 +7,10 @@ import (
 
 var _ sdk.Msg = &MsgCreateStockData{}
 
-func NewMsgCreateStockData(creator string, date string, stock_type string, stocks []*Stock) *MsgCreateStockData {
+func NewMsgCreateStockData(creator string, date string, stocks []*Stock) *MsgCreateStockData {
 	return &MsgCreateStockData{
 		Creator:   creator,
 		Date:      date,
-		StockType: stock_type,
 		Stocks:    stocks,
 	}
 }
@@ -47,11 +46,10 @@ func (msg *MsgCreateStockData) ValidateBasic() error {
 
 var _ sdk.Msg = &MsgUpdateStockData{}
 
-func NewMsgUpdateStockData(creator string, date string, stock_type string, stocks []*Stock) *MsgUpdateStockData {
+func NewMsgUpdateStockData(creator string, date string, stocks []*Stock) *MsgUpdateStockData {
 	return &MsgUpdateStockData{
 		Creator:   creator,
 		Date:      date,
-		StockType: stock_type,
 		Stocks:    stocks,
 	}
 }

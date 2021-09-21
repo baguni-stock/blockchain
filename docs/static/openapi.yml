@@ -23,13 +23,13 @@ paths:
                       type: string
                     date:
                       type: string
-                    stockType:
-                      type: string
                     stocks:
                       type: array
                       items:
                         type: object
                         properties:
+                          type:
+                            type: string
                           code:
                             type: string
                           amount:
@@ -145,13 +145,13 @@ paths:
                     type: string
                   date:
                     type: string
-                  stockType:
-                    type: string
                   stocks:
                     type: array
                     items:
                       type: object
                       properties:
+                        type:
+                          type: string
                         code:
                           type: string
                         amount:
@@ -19459,13 +19459,13 @@ definitions:
               type: string
             date:
               type: string
-            stockType:
-              type: string
             stocks:
               type: array
               items:
                 type: object
                 properties:
+                  type:
+                    type: string
                   code:
                     type: string
                   amount:
@@ -19542,13 +19542,13 @@ definitions:
             type: string
           date:
             type: string
-          stockType:
-            type: string
           stocks:
             type: array
             items:
               type: object
               properties:
+                type:
+                  type: string
                 code:
                   type: string
                 amount:
@@ -19566,6 +19566,8 @@ definitions:
   chainstockproject.blockchain.blockchain.Stock:
     type: object
     properties:
+      type:
+        type: string
       code:
         type: string
       amount:
@@ -19577,13 +19579,13 @@ definitions:
         type: string
       date:
         type: string
-      stockType:
-        type: string
       stocks:
         type: array
         items:
           type: object
           properties:
+            type:
+              type: string
             code:
               type: string
             amount:
