@@ -7,7 +7,7 @@
 APP="blockchain"
 APP_DAEMON="blockchaind"
 APP_HOME=$HOME/.$APP
-FIRST_NODE_REST_API="18.118.252.151"
+FIRST_NODE_REST_API="3.128.172.135"
 
 # go install
 sudo rm -rf /usr/local/go
@@ -31,3 +31,6 @@ wget -qO- $FIRST_NODE_REST_API:26657/genesis | jq -r .result.genesis > $APP_HOME
 NODE_ID=$(wget -qO- $FIRST_NODE_REST_API:26657/status | jq -r .result.node_info.id)
 sed "s#persistent_peers = \"\"#persistent_peers = \"$NODE_ID@$FIRST_NODE_REST_API:26656\"#" -i $APP_HOME/config/config.toml
 $APP_DAEMON start
+
+# sed -i 's,laddr = "tcp://127.0.0.1:26657",laddr = "tcp://0.0.0.0:26657",g' $APP_HOME/config/config.toml
+# PHEIGHT=$(wget -qO- 127.0.0.1:26657/dump_consensus_state | jq -r .result.peers[0].peer_state.round_state.height)

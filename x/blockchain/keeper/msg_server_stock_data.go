@@ -14,12 +14,12 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 
 	// Check if the value already exists
 	_, isFound := k.GetStockData(ctx, msg.Date)
-	if isFound {
+	if isFound{
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
 	}
 
 	root_user, isFound := k.GetUser(ctx, "root")
-	if isFound {
+	if !isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("user %v not exists", "root"))
 	}
 
@@ -30,7 +30,6 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 	var stockData = types.StockData{
 		Date:      msg.Date,
 		Creator:   msg.Creator,
-		StockType: msg.StockType,
 		Stocks:    msg.Stocks,
 	}
 
@@ -58,7 +57,6 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	var stockData = types.StockData{
 		Date:      msg.Date,
 		Creator:   msg.Creator,
-		StockType: msg.StockType,
 		Stocks:    msg.Stocks,
 	}
 

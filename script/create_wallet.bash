@@ -17,7 +17,7 @@ blockchaind keys show <validator> --bech val -a --keyring-backend test
 blockchaind
 
 #root 유저에게 token받기
-blockchaind tx bank send <root_address> <username> 1000000stake --chain-id stock-chain --keyring-backend test
+blockchaind tx blockchain create-user <username> --from <username> --chain-id stock-chain --keyring-backend test
 
 #자신의 token을 validator에게 위임
 blockchaind tx staking delegate <validator_address> <token_count>stake --from <username> --chain-id stock-chain --keyring-backend test 

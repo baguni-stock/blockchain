@@ -1,8 +1,6 @@
 package cli
 
 import (
-	"strings"
-
 	"github.com/spf13/cobra"
 
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
@@ -13,18 +11,18 @@ import (
 
 func CmdCreateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-stock-data [date] [stock_type] [stocks]",
+		Use:   "create-stock-data [date] [stock_type] [stock_code] [stock_amount]",
 		Short: "Create a new stock-data",
-		Args:  cobra.ExactArgs(2),
+		Args:  cobra.MinimumNArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			date := args[0]
-			stock_type := args[1]
+
 			var stocks []*types.Stock
-			for i := 2; i < len(args); i++ {
-				stock_split := strings.Split(args[i], "=")
+			for i := 1; i < len(args); i+=3 {
 				stock := types.Stock{
-					Code:   stock_split[0],
-					Amount: stock_split[1],
+					Type:   args[i],
+					Code:   args[i+1],
+					Amount: args[i+2],
 				}
 				stock_pointer := &stock
 				stocks = append(stocks, stock_pointer)
@@ -35,7 +33,7 @@ func CmdCreateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stock_type, stocks)
+			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -50,19 +48,18 @@ func CmdCreateStockData() *cobra.Command {
 
 func CmdUpdateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-stock-data [date] [stocks]",
+		Use:   "update-stock-data [date] [stock_type] [stock_code] [stock_amount]",
 		Short: "Update a stock-data",
-		Args:  cobra.ExactArgs(2),
+		Args:  cobra.MinimumNArgs(3),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			date := args[0]
-			stock_type := args[1]
 
 			var stocks []*types.Stock
-			for i := 1; i < len(args); i++ {
-				stock_split := strings.Split(args[i], "=")
+			for i := 1; i < len(args); i+=3 {
 				stock := types.Stock{
-					Code:   stock_split[0],
-					Amount: stock_split[1],
+					Type:   args[i],
+					Code:   args[i+1],
+					Amount: args[i+2],
 				}
 				stock_pointer := &stock
 				stocks = append(stocks, stock_pointer)
@@ -73,7 +70,7 @@ func CmdUpdateStockData() *cobra.Command {
 				return err
 			}
 
-			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stock_type, stocks)
+			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stocks)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
