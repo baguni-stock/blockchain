@@ -1,12 +1,9 @@
 accounts:
   - name: root
-    coins: ["1000000000000token", "100000000000stake"]
-  - name: alice
-    coins: ["10000token", "100000000stake"]
+    coins: ["1100000000stake"]
+    mnemonic: retreat uphold table initial liquid glow debris carbon salon expire mystery entry blue skirt differ wing general only human scout fish pipe asthma base
 validator:
   name: root
-  staked: "100000000000stake"
-  name: alice
   staked: "100000000stake"
 client:
   openapi:

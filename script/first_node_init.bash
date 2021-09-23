@@ -25,7 +25,7 @@ mkdir $GOPATH/pkg
 # blockchain app install
 make
 $APP_DAEMON init first-node --chain-id stock-chain
-$APP_DAEMON keys add root --keyring-backend test
+echo "retreat uphold table initial liquid glow debris carbon salon expire mystery entry blue skirt differ wing general only human scout fish pipe asthma base" | $APP_DAEMON keys add root --keyring-backend test --recover
 ROOT_ADDRESS=$($APP_DAEMON keys show root -a --keyring-backend test)
 $APP_DAEMON add-genesis-account $ROOT_ADDRESS 110000000000stake
 $APP_DAEMON gentx root 10000000000stake --chain-id stock-chain --keyring-backend test
