@@ -18,13 +18,9 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
 	}
 
-	root_user, isFound := k.GetUser(ctx, "root")
-	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("user %v not exists", "root"))
-	}
-
-	if root_user.Creator != msg.Creator {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "incorrect root user")
+	root_address := "cosmos1s3pzgpduvnq4r59mjx0vmdzfttqkhywwj7f8lk"
+	if root_address != msg.Creator{
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("creator not root %+v", msg.Creator))
 	}
 
 	var stockData = types.StockData{
