@@ -2,11 +2,12 @@ package cli
 
 import (
 	"context"
-
+	
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
+	"errors"
 )
 
 func CmdListStockData() *cobra.Command {
@@ -62,6 +63,41 @@ func CmdShowStockData() *cobra.Command {
 			}
 
 			return clientCtx.PrintProto(res)
+		},
+	}
+
+	flags.AddQueryFlagsToCmd(cmd)
+
+	return cmd
+}
+
+func CmdShowStockDataCode() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "show-stock-data-code [date] [code]",
+		Short: "shows a stock-data",
+		Args:  cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx := client.GetClientContextFromCmd(cmd)
+
+			queryClient := types.NewQueryClient(clientCtx)
+
+			params := &types.QueryGetStockDataRequest{
+				Date: args[0],
+			}
+
+			res, err := queryClient.StockData(context.Background(), params)
+			if err != nil {
+				return err
+			}
+			stocks := res.StockData.Stocks
+			for i:=0;i<len(stocks);i++{
+				if stocks[i].Code==args[1]{
+					println(stocks[i].Amount)
+					return nil
+				}
+
+			}
+			return errors.New("can't find code")
 		},
 	}
 

@@ -32,9 +32,9 @@ func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (
 	}
 
 	var user = types.User{
-		Name:    msg.Name,
-		Address: msg.Address,
 		Creator: msg.Creator,
+		Address: msg.Address,
+		Name:    msg.Name,
 	}
 
 	// coin 발행
@@ -78,9 +78,9 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 	}
 
 	var user = types.User{
-		Name:    msg.Name,
-		Address:    msg.Address,
 		Creator: msg.Creator,
+		Address:    msg.Address,
+		Name:    msg.Name,
 	}
 
 	k.SetUser(ctx, user)

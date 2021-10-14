@@ -22,3 +22,12 @@ go.sum: go.mod
 
 test:
 	@go test -mod=readonly $(PACKAGES)
+	
+cross: go.sum
+	@echo "--> Installing cross blockchaind"
+	@echo "env GOOS=linux GOARCH=386 go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind"
+	@env GOOS=linux GOARCH=386 go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind
+	@echo "env GOOS=linux GOARCH=arm go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind"
+	@env GOOS=linux GOARCH=arm go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind
+	@echo "env GOOS=linux GOARCH=arm64 go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind"
+	@env GOOS=linux GOARCH=arm64 go install -mod=readonly $(BUILD_FLAGS) ./cmd/blockchaind
