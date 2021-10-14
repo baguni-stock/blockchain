@@ -163,11 +163,11 @@ var (
 
 func init() {
 	userHomeDir, err := os.UserHomeDir()
-	if err != nil {
-		panic(err)
+	if err != nil {	
+		DefaultNodeHome = filepath.Join("/data/user/0/com.example.stock/files/", "."+Name)
+	}else{
+		DefaultNodeHome = filepath.Join(userHomeDir, "."+Name)
 	}
-
-	DefaultNodeHome = filepath.Join(userHomeDir, "."+Name)
 }
 
 // App extends an ABCI application, but with most of its parameters exported.

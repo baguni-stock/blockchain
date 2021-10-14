@@ -24,8 +24,7 @@ func CmdCreateStockData() *cobra.Command {
 					Code:   args[i+1],
 					Amount: args[i+2],
 				}
-				stock_pointer := &stock
-				stocks = append(stocks, stock_pointer)
+				stocks = append(stocks, &stock)
 			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
