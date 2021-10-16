@@ -163,9 +163,9 @@ var (
 
 func init() {
 	userHomeDir, err := os.UserHomeDir()
-	if err != nil {	
+	if err != nil {
 		DefaultNodeHome = filepath.Join("/data/user/0/com.example.stock/files/", "."+Name)
-	}else{
+	} else {
 		DefaultNodeHome = filepath.Join(userHomeDir, "."+Name)
 	}
 }

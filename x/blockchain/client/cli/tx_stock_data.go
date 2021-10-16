@@ -18,7 +18,7 @@ func CmdCreateStockData() *cobra.Command {
 			date := args[0]
 
 			var stocks []*types.Stock
-			for i := 1; i < len(args); i+=3 {
+			for i := 1; i < len(args); i += 3 {
 				stock := types.Stock{
 					Type:   args[i],
 					Code:   args[i+1],
@@ -54,7 +54,7 @@ func CmdUpdateStockData() *cobra.Command {
 			date := args[0]
 
 			var stocks []*types.Stock
-			for i := 1; i < len(args); i+=3 {
+			for i := 1; i < len(args); i += 3 {
 				stock := types.Stock{
 					Type:   args[i],
 					Code:   args[i+1],

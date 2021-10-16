@@ -12,7 +12,6 @@ import (
 func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (*types.MsgCreateUserResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-
 	// Check if the value already exists_
 	_, isFound := k.GetUser(ctx, msg.Name)
 	if isFound {

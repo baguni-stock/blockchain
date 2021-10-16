@@ -32,3 +32,7 @@ const (
 const (
 	StockDataKey = "StockData-value-"
 )
+
+const (
+	StockTransactionKey = "StockTransaction-value-"
+)

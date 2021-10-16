@@ -10,6 +10,11 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
+	// Set all the stockTransaction
+	for _, elem := range genState.StockTransactionList {
+		k.SetStockTransaction(ctx, *elem)
+	}
+
 	// Set all the stockData
 	for _, elem := range genState.StockDataList {
 		k.SetStockData(ctx, *elem)
@@ -28,6 +33,13 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 
 	// this line is used by starport scaffolding # genesis/module/export
+	// Get all stockTransaction
+	stockTransactionList := k.GetAllStockTransaction(ctx)
+	for _, elem := range stockTransactionList {
+		elem := elem
+		genesis.StockTransactionList = append(genesis.StockTransactionList, &elem)
+	}
+
 	// Get all stockData
 	stockDataList := k.GetAllStockData(ctx)
 	for _, elem := range stockDataList {

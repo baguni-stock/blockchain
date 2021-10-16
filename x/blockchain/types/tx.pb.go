@@ -28,6 +28,198 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 // this line is used by starport scaffolding # proto/tx/message
+type MsgCreateStockTransaction struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Code    string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Count   string `protobuf:"bytes,3,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (m *MsgCreateStockTransaction) Reset()         { *m = MsgCreateStockTransaction{} }
+func (m *MsgCreateStockTransaction) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStockTransaction) ProtoMessage()    {}
+func (*MsgCreateStockTransaction) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{0}
+}
+func (m *MsgCreateStockTransaction) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStockTransaction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStockTransaction.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStockTransaction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStockTransaction.Merge(m, src)
+}
+func (m *MsgCreateStockTransaction) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStockTransaction) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStockTransaction.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStockTransaction proto.InternalMessageInfo
+
+func (m *MsgCreateStockTransaction) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgCreateStockTransaction) GetCode() string {
+	if m != nil {
+		return m.Code
+	}
+	return ""
+}
+
+func (m *MsgCreateStockTransaction) GetCount() string {
+	if m != nil {
+		return m.Count
+	}
+	return ""
+}
+
+type MsgCreateStockTransactionResponse struct {
+}
+
+func (m *MsgCreateStockTransactionResponse) Reset()         { *m = MsgCreateStockTransactionResponse{} }
+func (m *MsgCreateStockTransactionResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgCreateStockTransactionResponse) ProtoMessage()    {}
+func (*MsgCreateStockTransactionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{1}
+}
+func (m *MsgCreateStockTransactionResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgCreateStockTransactionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgCreateStockTransactionResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgCreateStockTransactionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgCreateStockTransactionResponse.Merge(m, src)
+}
+func (m *MsgCreateStockTransactionResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgCreateStockTransactionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgCreateStockTransactionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgCreateStockTransactionResponse proto.InternalMessageInfo
+
+type MsgDeleteStockTransaction struct {
+	Creator string `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
+	Code    string `protobuf:"bytes,2,opt,name=code,proto3" json:"code,omitempty"`
+	Count   string `protobuf:"bytes,3,opt,name=count,proto3" json:"count,omitempty"`
+}
+
+func (m *MsgDeleteStockTransaction) Reset()         { *m = MsgDeleteStockTransaction{} }
+func (m *MsgDeleteStockTransaction) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStockTransaction) ProtoMessage()    {}
+func (*MsgDeleteStockTransaction) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{2}
+}
+func (m *MsgDeleteStockTransaction) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStockTransaction) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStockTransaction.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStockTransaction) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStockTransaction.Merge(m, src)
+}
+func (m *MsgDeleteStockTransaction) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStockTransaction) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStockTransaction.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStockTransaction proto.InternalMessageInfo
+
+func (m *MsgDeleteStockTransaction) GetCreator() string {
+	if m != nil {
+		return m.Creator
+	}
+	return ""
+}
+
+func (m *MsgDeleteStockTransaction) GetCode() string {
+	if m != nil {
+		return m.Code
+	}
+	return ""
+}
+
+func (m *MsgDeleteStockTransaction) GetCount() string {
+	if m != nil {
+		return m.Count
+	}
+	return ""
+}
+
+type MsgDeleteStockTransactionResponse struct {
+}
+
+func (m *MsgDeleteStockTransactionResponse) Reset()         { *m = MsgDeleteStockTransactionResponse{} }
+func (m *MsgDeleteStockTransactionResponse) String() string { return proto.CompactTextString(m) }
+func (*MsgDeleteStockTransactionResponse) ProtoMessage()    {}
+func (*MsgDeleteStockTransactionResponse) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5fcd640ea230c639, []int{3}
+}
+func (m *MsgDeleteStockTransactionResponse) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *MsgDeleteStockTransactionResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_MsgDeleteStockTransactionResponse.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *MsgDeleteStockTransactionResponse) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MsgDeleteStockTransactionResponse.Merge(m, src)
+}
+func (m *MsgDeleteStockTransactionResponse) XXX_Size() int {
+	return m.Size()
+}
+func (m *MsgDeleteStockTransactionResponse) XXX_DiscardUnknown() {
+	xxx_messageInfo_MsgDeleteStockTransactionResponse.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MsgDeleteStockTransactionResponse proto.InternalMessageInfo
+
 type MsgCreateStockData struct {
 	Creator string   `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
 	Date    string   `protobuf:"bytes,2,opt,name=date,proto3" json:"date,omitempty"`
@@ -38,7 +230,7 @@ func (m *MsgCreateStockData) Reset()         { *m = MsgCreateStockData{} }
 func (m *MsgCreateStockData) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateStockData) ProtoMessage()    {}
 func (*MsgCreateStockData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{0}
+	return fileDescriptor_5fcd640ea230c639, []int{4}
 }
 func (m *MsgCreateStockData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -95,7 +287,7 @@ func (m *MsgCreateStockDataResponse) Reset()         { *m = MsgCreateStockDataRe
 func (m *MsgCreateStockDataResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateStockDataResponse) ProtoMessage()    {}
 func (*MsgCreateStockDataResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{1}
+	return fileDescriptor_5fcd640ea230c639, []int{5}
 }
 func (m *MsgCreateStockDataResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -134,7 +326,7 @@ func (m *MsgUpdateStockData) Reset()         { *m = MsgUpdateStockData{} }
 func (m *MsgUpdateStockData) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateStockData) ProtoMessage()    {}
 func (*MsgUpdateStockData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{2}
+	return fileDescriptor_5fcd640ea230c639, []int{6}
 }
 func (m *MsgUpdateStockData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -191,7 +383,7 @@ func (m *MsgUpdateStockDataResponse) Reset()         { *m = MsgUpdateStockDataRe
 func (m *MsgUpdateStockDataResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateStockDataResponse) ProtoMessage()    {}
 func (*MsgUpdateStockDataResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{3}
+	return fileDescriptor_5fcd640ea230c639, []int{7}
 }
 func (m *MsgUpdateStockDataResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -229,7 +421,7 @@ func (m *MsgDeleteStockData) Reset()         { *m = MsgDeleteStockData{} }
 func (m *MsgDeleteStockData) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteStockData) ProtoMessage()    {}
 func (*MsgDeleteStockData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{4}
+	return fileDescriptor_5fcd640ea230c639, []int{8}
 }
 func (m *MsgDeleteStockData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -279,7 +471,7 @@ func (m *MsgDeleteStockDataResponse) Reset()         { *m = MsgDeleteStockDataRe
 func (m *MsgDeleteStockDataResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteStockDataResponse) ProtoMessage()    {}
 func (*MsgDeleteStockDataResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{5}
+	return fileDescriptor_5fcd640ea230c639, []int{9}
 }
 func (m *MsgDeleteStockDataResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -317,7 +509,7 @@ func (m *MsgCreateUser) Reset()         { *m = MsgCreateUser{} }
 func (m *MsgCreateUser) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateUser) ProtoMessage()    {}
 func (*MsgCreateUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{6}
+	return fileDescriptor_5fcd640ea230c639, []int{10}
 }
 func (m *MsgCreateUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -367,7 +559,7 @@ func (m *MsgCreateUserResponse) Reset()         { *m = MsgCreateUserResponse{} }
 func (m *MsgCreateUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgCreateUserResponse) ProtoMessage()    {}
 func (*MsgCreateUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{7}
+	return fileDescriptor_5fcd640ea230c639, []int{11}
 }
 func (m *MsgCreateUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -405,7 +597,7 @@ func (m *MsgUpdateUser) Reset()         { *m = MsgUpdateUser{} }
 func (m *MsgUpdateUser) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateUser) ProtoMessage()    {}
 func (*MsgUpdateUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{8}
+	return fileDescriptor_5fcd640ea230c639, []int{12}
 }
 func (m *MsgUpdateUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -455,7 +647,7 @@ func (m *MsgUpdateUserResponse) Reset()         { *m = MsgUpdateUserResponse{} }
 func (m *MsgUpdateUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgUpdateUserResponse) ProtoMessage()    {}
 func (*MsgUpdateUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{9}
+	return fileDescriptor_5fcd640ea230c639, []int{13}
 }
 func (m *MsgUpdateUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -493,7 +685,7 @@ func (m *MsgDeleteUser) Reset()         { *m = MsgDeleteUser{} }
 func (m *MsgDeleteUser) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteUser) ProtoMessage()    {}
 func (*MsgDeleteUser) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{10}
+	return fileDescriptor_5fcd640ea230c639, []int{14}
 }
 func (m *MsgDeleteUser) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -543,7 +735,7 @@ func (m *MsgDeleteUserResponse) Reset()         { *m = MsgDeleteUserResponse{} }
 func (m *MsgDeleteUserResponse) String() string { return proto.CompactTextString(m) }
 func (*MsgDeleteUserResponse) ProtoMessage()    {}
 func (*MsgDeleteUserResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5fcd640ea230c639, []int{11}
+	return fileDescriptor_5fcd640ea230c639, []int{15}
 }
 func (m *MsgDeleteUserResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -573,6 +765,10 @@ func (m *MsgDeleteUserResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgDeleteUserResponse proto.InternalMessageInfo
 
 func init() {
+	proto.RegisterType((*MsgCreateStockTransaction)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockTransaction")
+	proto.RegisterType((*MsgCreateStockTransactionResponse)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockTransactionResponse")
+	proto.RegisterType((*MsgDeleteStockTransaction)(nil), "chainstockproject.blockchain.blockchain.MsgDeleteStockTransaction")
+	proto.RegisterType((*MsgDeleteStockTransactionResponse)(nil), "chainstockproject.blockchain.blockchain.MsgDeleteStockTransactionResponse")
 	proto.RegisterType((*MsgCreateStockData)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockData")
 	proto.RegisterType((*MsgCreateStockDataResponse)(nil), "chainstockproject.blockchain.blockchain.MsgCreateStockDataResponse")
 	proto.RegisterType((*MsgUpdateStockData)(nil), "chainstockproject.blockchain.blockchain.MsgUpdateStockData")
@@ -590,34 +786,40 @@ func init() {
 func init() { proto.RegisterFile("blockchain/tx.proto", fileDescriptor_5fcd640ea230c639) }
 
 var fileDescriptor_5fcd640ea230c639 = []byte{
-	// 419 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x95, 0x3f, 0x4f, 0x02, 0x31,
-	0x18, 0xc6, 0xa9, 0x18, 0x8c, 0x35, 0xc6, 0xa4, 0x86, 0x78, 0x39, 0xcd, 0x85, 0xb0, 0xc8, 0xe2,
-	0x91, 0x60, 0xc2, 0x42, 0x74, 0x00, 0xe2, 0xc6, 0x82, 0x61, 0x71, 0x31, 0xe5, 0x68, 0x00, 0xf9,
-	0xd3, 0xcb, 0xb5, 0x24, 0xb8, 0x3b, 0x39, 0x99, 0xf8, 0xa5, 0x1c, 0x19, 0x1d, 0x1c, 0x0c, 0x7c,
-	0x11, 0x73, 0x3d, 0xee, 0xae, 0xf4, 0x82, 0xa1, 0xe7, 0xe2, 0xd6, 0xf6, 0xfa, 0x3c, 0xef, 0xaf,
-	0xef, 0x3d, 0x4d, 0xe1, 0x69, 0x77, 0x4c, 0x9d, 0x91, 0x33, 0xc0, 0xc3, 0x69, 0x99, 0xcf, 0x6d,
-	0xd7, 0xa3, 0x9c, 0xa2, 0x4b, 0x31, 0x67, 0x9c, 0x3a, 0x23, 0xd7, 0xa3, 0x4f, 0xc4, 0xe1, 0x76,
-	0xbc, 0x4d, 0x1a, 0x9a, 0xe7, 0x92, 0x5a, 0x6c, 0x7f, 0xec, 0x61, 0x8e, 0x03, 0x17, 0x33, 0x2f,
-	0x7d, 0x9c, 0x31, 0xe2, 0x05, 0xcb, 0xc5, 0x57, 0x00, 0x51, 0x8b, 0xf5, 0x1b, 0x1e, 0xc1, 0x9c,
-	0xdc, 0xfb, 0xa2, 0x26, 0xe6, 0x18, 0x19, 0xf0, 0xc0, 0xf1, 0x97, 0xa8, 0x67, 0x80, 0x02, 0x28,
-	0x1d, 0xb6, 0xc3, 0x29, 0x42, 0x70, 0xbf, 0x87, 0x39, 0x31, 0xf6, 0xc4, 0xb2, 0x18, 0xa3, 0x3b,
-	0x98, 0x13, 0xf5, 0x98, 0x91, 0x2d, 0x64, 0x4b, 0x47, 0x15, 0xdb, 0xde, 0x11, 0xd9, 0x16, 0x15,
-	0xdb, 0x6b, 0x75, 0xf1, 0x02, 0x9a, 0x49, 0x96, 0x36, 0x61, 0x2e, 0x9d, 0x32, 0x12, 0xa2, 0x76,
-	0xdc, 0xde, 0xbf, 0x41, 0x55, 0x58, 0x22, 0xd4, 0xba, 0x20, 0x6d, 0x92, 0x31, 0x49, 0x4d, 0xba,
-	0xae, 0xa0, 0x78, 0x44, 0x15, 0x6e, 0xe0, 0x71, 0xd4, 0xaa, 0x0e, 0x23, 0xde, 0xef, 0xe6, 0x53,
-	0x3c, 0x89, 0xcc, 0xfd, 0x71, 0xf1, 0x0c, 0xe6, 0x37, 0xe4, 0x8a, 0x6f, 0x70, 0xae, 0xd4, 0xbe,
-	0xb1, 0x5c, 0xf1, 0x0d, 0x4e, 0x93, 0xda, 0x37, 0x96, 0x87, 0xbe, 0x95, 0xaf, 0x1c, 0xcc, 0xb6,
-	0x58, 0x1f, 0xbd, 0x03, 0x78, 0xa2, 0x86, 0xb8, 0xb6, 0xf3, 0xbf, 0x4d, 0xa6, 0xce, 0x6c, 0xfc,
-	0x41, 0x1c, 0xd2, 0x09, 0x2a, 0x35, 0xaf, 0x5a, 0x54, 0x8a, 0x58, 0x8f, 0x6a, 0x4b, 0x3a, 0x05,
-	0x95, 0x9a, 0x4d, 0x2d, 0x2a, 0x45, 0xac, 0x47, 0xb5, 0x25, 0xd1, 0xe8, 0x05, 0x40, 0x28, 0xe5,
-	0xb9, 0xaa, 0xdf, 0x7f, 0x5f, 0x67, 0xde, 0xa6, 0xd3, 0x6d, 0x60, 0x48, 0xf1, 0xaf, 0xea, 0x37,
-	0x5c, 0x1f, 0x23, 0x79, 0x5f, 0x04, 0x86, 0x74, 0x5b, 0xaa, 0xfa, 0x1d, 0xd6, 0xc7, 0x48, 0x5e,
-	0xaf, 0x7a, 0xe7, 0x63, 0x69, 0x81, 0xc5, 0xd2, 0x02, 0xdf, 0x4b, 0x0b, 0xbc, 0xad, 0xac, 0xcc,
-	0x62, 0x65, 0x65, 0x3e, 0x57, 0x56, 0xe6, 0xa1, 0xd6, 0x1f, 0xf2, 0xc1, 0xac, 0x6b, 0x3b, 0x74,
-	0x52, 0x8e, 0x6b, 0x5c, 0xad, 0x8b, 0x94, 0xa5, 0xd7, 0x66, 0x2e, 0x4f, 0xf8, 0xb3, 0x4b, 0x58,
-	0x37, 0x27, 0x1e, 0x9f, 0xeb, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x7d, 0x86, 0x7e, 0x64, 0xf0,
-	0x06, 0x00, 0x00,
+	// 516 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x96, 0x3f, 0x6f, 0xd3, 0x40,
+	0x18, 0xc6, 0x73, 0x04, 0x8a, 0xfa, 0x22, 0x84, 0x74, 0x50, 0x30, 0x06, 0x59, 0xc5, 0x0c, 0x74,
+	0xc1, 0x91, 0x8a, 0x94, 0x25, 0x82, 0x21, 0xad, 0x18, 0x90, 0xba, 0x04, 0xb2, 0xb0, 0x54, 0x97,
+	0xf3, 0x29, 0x0d, 0x6d, 0x7d, 0x96, 0xef, 0x22, 0x95, 0x9d, 0x89, 0x09, 0x89, 0x2f, 0xc1, 0xcc,
+	0xa7, 0x60, 0xec, 0xc8, 0x88, 0x92, 0x2f, 0x82, 0x7c, 0x76, 0xec, 0xf3, 0xb9, 0x8e, 0x7a, 0x8e,
+	0x90, 0xd8, 0xee, 0xdf, 0xf3, 0xbc, 0x3f, 0xbf, 0xa7, 0x7b, 0x64, 0xb8, 0x3f, 0x39, 0xe3, 0xf4,
+	0x94, 0x9e, 0x90, 0x59, 0xd4, 0x93, 0x17, 0x41, 0x9c, 0x70, 0xc9, 0xf1, 0x0b, 0x35, 0x17, 0x92,
+	0xd3, 0xd3, 0x38, 0xe1, 0x9f, 0x18, 0x95, 0x41, 0x79, 0x4c, 0x1b, 0xba, 0xbe, 0xa6, 0x56, 0xc7,
+	0x8f, 0x65, 0x42, 0x22, 0x41, 0xa8, 0x9c, 0xf1, 0x28, 0x33, 0x73, 0x9f, 0xd4, 0xce, 0x84, 0x44,
+	0x92, 0x7c, 0x73, 0x47, 0xdb, 0x9c, 0x0b, 0x96, 0x64, 0xcb, 0xfe, 0x31, 0x3c, 0x3e, 0x12, 0xd3,
+	0x83, 0x84, 0x11, 0xc9, 0xde, 0xa7, 0x9a, 0x0f, 0xa5, 0x2d, 0x76, 0xe0, 0x36, 0x4d, 0x77, 0x78,
+	0xe2, 0xa0, 0x5d, 0xb4, 0xb7, 0x3d, 0x5a, 0x4d, 0x31, 0x86, 0x9b, 0x94, 0x87, 0xcc, 0xb9, 0xa1,
+	0x96, 0xd5, 0x18, 0x3f, 0x80, 0x5b, 0x94, 0xcf, 0x23, 0xe9, 0x74, 0xd5, 0x62, 0x36, 0xf1, 0x9f,
+	0xc3, 0xb3, 0xc6, 0x02, 0x23, 0x26, 0x62, 0x1e, 0x09, 0x96, 0x53, 0x1c, 0xb2, 0x33, 0xf6, 0x4f,
+	0x29, 0xae, 0x2e, 0x50, 0x50, 0x7c, 0x45, 0x80, 0xab, 0xac, 0x87, 0x44, 0x92, 0xf5, 0xf5, 0x43,
+	0x22, 0x8b, 0xfa, 0xe9, 0x18, 0xbf, 0x85, 0x2d, 0xd5, 0x7b, 0xe1, 0x74, 0x77, 0xbb, 0x7b, 0x77,
+	0xf6, 0x83, 0xe0, 0x9a, 0x57, 0x1c, 0xa8, 0x8a, 0xa3, 0x5c, 0xed, 0x3f, 0x05, 0xb7, 0xce, 0x62,
+	0xa2, 0x8e, 0xe3, 0xf0, 0xbf, 0x41, 0x35, 0x58, 0x0a, 0xd4, 0xa1, 0x22, 0xd5, 0x5a, 0x6f, 0x4f,
+	0x9a, 0x57, 0x30, 0x3c, 0x8a, 0x0a, 0xaf, 0xe1, 0x6e, 0xd1, 0xaa, 0xb1, 0x60, 0xc9, 0x7a, 0xf3,
+	0x88, 0x9c, 0x17, 0xe6, 0xe9, 0xd8, 0x7f, 0x04, 0x3b, 0x15, 0xb9, 0xe1, 0x9b, 0x7d, 0x57, 0x6b,
+	0xdf, 0x52, 0x6e, 0xf8, 0x66, 0x5f, 0xd3, 0xda, 0xb7, 0x94, 0xaf, 0x7c, 0xf7, 0x7f, 0x6e, 0x43,
+	0xf7, 0x48, 0x4c, 0xf1, 0x0f, 0x04, 0x0f, 0x1b, 0x5e, 0xf4, 0xf0, 0xda, 0x57, 0xdc, 0xf8, 0x68,
+	0xdd, 0x77, 0x9b, 0x7b, 0xac, 0x90, 0x15, 0x6a, 0xc3, 0xb3, 0xb7, 0x42, 0xbd, 0xda, 0xc3, 0x0e,
+	0x75, 0x7d, 0x3a, 0xe0, 0xef, 0x08, 0xee, 0x99, 0xd1, 0x30, 0x68, 0xd9, 0x8a, 0x54, 0xec, 0x1e,
+	0x6c, 0x20, 0xae, 0x50, 0x99, 0x29, 0x60, 0x45, 0x65, 0x88, 0xed, 0xa8, 0x1a, 0xde, 0xbc, 0xa2,
+	0x32, 0x5f, 0xfc, 0xa0, 0xe5, 0x5d, 0xd8, 0x53, 0x35, 0xe4, 0x04, 0xfe, 0x82, 0x00, 0xb4, 0x94,
+	0xe8, 0xdb, 0xf7, 0x3f, 0xd5, 0xb9, 0x6f, 0xda, 0xe9, 0x2a, 0x18, 0x5a, 0xa8, 0xf4, 0xed, 0x1b,
+	0x6e, 0x8f, 0x51, 0x4f, 0x21, 0x85, 0xa1, 0x65, 0x50, 0xdf, 0xbe, 0xc3, 0xf6, 0x18, 0xf5, 0xd0,
+	0x1a, 0x8e, 0x7f, 0x2d, 0x3c, 0x74, 0xb9, 0xf0, 0xd0, 0x9f, 0x85, 0x87, 0xbe, 0x2d, 0xbd, 0xce,
+	0xe5, 0xd2, 0xeb, 0xfc, 0x5e, 0x7a, 0x9d, 0x8f, 0x83, 0xe9, 0x4c, 0x9e, 0xcc, 0x27, 0x01, 0xe5,
+	0xe7, 0xbd, 0xb2, 0xc6, 0xcb, 0xbc, 0x48, 0x4f, 0xfb, 0x9f, 0xb9, 0xd0, 0x27, 0xf2, 0x73, 0xcc,
+	0xc4, 0x64, 0x4b, 0xfd, 0xde, 0xbc, 0xfa, 0x1b, 0x00, 0x00, 0xff, 0xff, 0x0b, 0xc4, 0xe3, 0xbf,
+	0x76, 0x09, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -633,6 +835,8 @@ const _ = grpc.SupportPackageIsVersion4
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type MsgClient interface {
 	// this line is used by starport scaffolding # proto/tx/rpc
+	CreateStockTransaction(ctx context.Context, in *MsgCreateStockTransaction, opts ...grpc.CallOption) (*MsgCreateStockTransactionResponse, error)
+	DeleteStockTransaction(ctx context.Context, in *MsgDeleteStockTransaction, opts ...grpc.CallOption) (*MsgDeleteStockTransactionResponse, error)
 	CreateStockData(ctx context.Context, in *MsgCreateStockData, opts ...grpc.CallOption) (*MsgCreateStockDataResponse, error)
 	UpdateStockData(ctx context.Context, in *MsgUpdateStockData, opts ...grpc.CallOption) (*MsgUpdateStockDataResponse, error)
 	DeleteStockData(ctx context.Context, in *MsgDeleteStockData, opts ...grpc.CallOption) (*MsgDeleteStockDataResponse, error)
@@ -647,6 +851,24 @@ type msgClient struct {
 
 func NewMsgClient(cc grpc1.ClientConn) MsgClient {
 	return &msgClient{cc}
+}
+
+func (c *msgClient) CreateStockTransaction(ctx context.Context, in *MsgCreateStockTransaction, opts ...grpc.CallOption) (*MsgCreateStockTransactionResponse, error) {
+	out := new(MsgCreateStockTransactionResponse)
+	err := c.cc.Invoke(ctx, "/chainstockproject.blockchain.blockchain.Msg/CreateStockTransaction", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *msgClient) DeleteStockTransaction(ctx context.Context, in *MsgDeleteStockTransaction, opts ...grpc.CallOption) (*MsgDeleteStockTransactionResponse, error) {
+	out := new(MsgDeleteStockTransactionResponse)
+	err := c.cc.Invoke(ctx, "/chainstockproject.blockchain.blockchain.Msg/DeleteStockTransaction", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *msgClient) CreateStockData(ctx context.Context, in *MsgCreateStockData, opts ...grpc.CallOption) (*MsgCreateStockDataResponse, error) {
@@ -706,6 +928,8 @@ func (c *msgClient) DeleteUser(ctx context.Context, in *MsgDeleteUser, opts ...g
 // MsgServer is the server API for Msg service.
 type MsgServer interface {
 	// this line is used by starport scaffolding # proto/tx/rpc
+	CreateStockTransaction(context.Context, *MsgCreateStockTransaction) (*MsgCreateStockTransactionResponse, error)
+	DeleteStockTransaction(context.Context, *MsgDeleteStockTransaction) (*MsgDeleteStockTransactionResponse, error)
 	CreateStockData(context.Context, *MsgCreateStockData) (*MsgCreateStockDataResponse, error)
 	UpdateStockData(context.Context, *MsgUpdateStockData) (*MsgUpdateStockDataResponse, error)
 	DeleteStockData(context.Context, *MsgDeleteStockData) (*MsgDeleteStockDataResponse, error)
@@ -718,6 +942,12 @@ type MsgServer interface {
 type UnimplementedMsgServer struct {
 }
 
+func (*UnimplementedMsgServer) CreateStockTransaction(ctx context.Context, req *MsgCreateStockTransaction) (*MsgCreateStockTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateStockTransaction not implemented")
+}
+func (*UnimplementedMsgServer) DeleteStockTransaction(ctx context.Context, req *MsgDeleteStockTransaction) (*MsgDeleteStockTransactionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteStockTransaction not implemented")
+}
 func (*UnimplementedMsgServer) CreateStockData(ctx context.Context, req *MsgCreateStockData) (*MsgCreateStockDataResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateStockData not implemented")
 }
@@ -739,6 +969,42 @@ func (*UnimplementedMsgServer) DeleteUser(ctx context.Context, req *MsgDeleteUse
 
 func RegisterMsgServer(s grpc1.Server, srv MsgServer) {
 	s.RegisterService(&_Msg_serviceDesc, srv)
+}
+
+func _Msg_CreateStockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgCreateStockTransaction)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).CreateStockTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chainstockproject.blockchain.blockchain.Msg/CreateStockTransaction",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).CreateStockTransaction(ctx, req.(*MsgCreateStockTransaction))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Msg_DeleteStockTransaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(MsgDeleteStockTransaction)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(MsgServer).DeleteStockTransaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/chainstockproject.blockchain.blockchain.Msg/DeleteStockTransaction",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(MsgServer).DeleteStockTransaction(ctx, req.(*MsgDeleteStockTransaction))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Msg_CreateStockData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -854,6 +1120,14 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*MsgServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "CreateStockTransaction",
+			Handler:    _Msg_CreateStockTransaction_Handler,
+		},
+		{
+			MethodName: "DeleteStockTransaction",
+			Handler:    _Msg_DeleteStockTransaction_Handler,
+		},
+		{
 			MethodName: "CreateStockData",
 			Handler:    _Msg_CreateStockData_Handler,
 		},
@@ -880,6 +1154,140 @@ var _Msg_serviceDesc = grpc.ServiceDesc{
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "blockchain/tx.proto",
+}
+
+func (m *MsgCreateStockTransaction) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStockTransaction) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStockTransaction) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Count) > 0 {
+		i -= len(m.Count)
+		copy(dAtA[i:], m.Count)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Count)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Code) > 0 {
+		i -= len(m.Code)
+		copy(dAtA[i:], m.Code)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Code)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgCreateStockTransactionResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgCreateStockTransactionResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgCreateStockTransactionResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStockTransaction) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStockTransaction) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStockTransaction) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if len(m.Count) > 0 {
+		i -= len(m.Count)
+		copy(dAtA[i:], m.Count)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Count)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if len(m.Code) > 0 {
+		i -= len(m.Code)
+		copy(dAtA[i:], m.Code)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Code)))
+		i--
+		dAtA[i] = 0x12
+	}
+	if len(m.Creator) > 0 {
+		i -= len(m.Creator)
+		copy(dAtA[i:], m.Creator)
+		i = encodeVarintTx(dAtA, i, uint64(len(m.Creator)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *MsgDeleteStockTransactionResponse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *MsgDeleteStockTransactionResponse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *MsgDeleteStockTransactionResponse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	return len(dAtA) - i, nil
 }
 
 func (m *MsgCreateStockData) Marshal() (dAtA []byte, err error) {
@@ -1281,6 +1689,66 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *MsgCreateStockTransaction) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Code)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Count)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgCreateStockTransactionResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
+func (m *MsgDeleteStockTransaction) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.Creator)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Code)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	l = len(m.Count)
+	if l > 0 {
+		n += 1 + l + sovTx(uint64(l))
+	}
+	return n
+}
+
+func (m *MsgDeleteStockTransactionResponse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	return n
+}
+
 func (m *MsgCreateStockData) Size() (n int) {
 	if m == nil {
 		return 0
@@ -1454,6 +1922,398 @@ func sovTx(x uint64) (n int) {
 }
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *MsgCreateStockTransaction) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStockTransaction: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Code", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Code = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Count", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Count = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgCreateStockTransactionResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgCreateStockTransactionResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgCreateStockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStockTransaction) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStockTransaction: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStockTransaction: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Creator", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Creator = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Code", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Code = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Count", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowTx
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthTx
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthTx
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Count = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *MsgDeleteStockTransactionResponse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowTx
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: MsgDeleteStockTransactionResponse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: MsgDeleteStockTransactionResponse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		default:
+			iNdEx = preIndex
+			skippy, err := skipTx(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthTx
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *MsgCreateStockData) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)

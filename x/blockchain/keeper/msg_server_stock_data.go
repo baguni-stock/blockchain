@@ -14,19 +14,19 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 
 	// Check if the value already exists
 	_, isFound := k.GetStockData(ctx, msg.Date)
-	if isFound{
+	if isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
 	}
 
 	root_address := "cosmos1s3pzgpduvnq4r59mjx0vmdzfttqkhywwj7f8lk"
-	if root_address != msg.Creator{
+	if root_address != msg.Creator {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("creator not root %+v", msg.Creator))
 	}
 
 	var stockData = types.StockData{
-		Date:      msg.Date,
-		Creator:   msg.Creator,
-		Stocks:    msg.Stocks,
+		Date:    msg.Date,
+		Creator: msg.Creator,
+		Stocks:  msg.Stocks,
 	}
 
 	k.SetStockData(
@@ -51,9 +51,9 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	}
 
 	var stockData = types.StockData{
-		Date:      msg.Date,
-		Creator:   msg.Creator,
-		Stocks:    msg.Stocks,
+		Date:    msg.Date,
+		Creator: msg.Creator,
+		Stocks:  msg.Stocks,
 	}
 
 	k.SetStockData(ctx, stockData)

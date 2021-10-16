@@ -9,9 +9,9 @@ var _ sdk.Msg = &MsgCreateStockData{}
 
 func NewMsgCreateStockData(creator string, date string, stocks []*Stock) *MsgCreateStockData {
 	return &MsgCreateStockData{
-		Creator:   creator,
-		Date:      date,
-		Stocks:    stocks,
+		Creator: creator,
+		Date:    date,
+		Stocks:  stocks,
 	}
 }
 
@@ -48,9 +48,9 @@ var _ sdk.Msg = &MsgUpdateStockData{}
 
 func NewMsgUpdateStockData(creator string, date string, stocks []*Stock) *MsgUpdateStockData {
 	return &MsgUpdateStockData{
-		Creator:   creator,
-		Date:      date,
-		Stocks:    stocks,
+		Creator: creator,
+		Date:    date,
+		Stocks:  stocks,
 	}
 }
 

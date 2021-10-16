@@ -2,12 +2,12 @@ package cli
 
 import (
 	"context"
-	
+
+	"errors"
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
 	"github.com/spf13/cobra"
-	"errors"
 )
 
 func CmdListStockData() *cobra.Command {
@@ -90,8 +90,8 @@ func CmdShowStockDataCode() *cobra.Command {
 				return err
 			}
 			stocks := res.StockData.Stocks
-			for i:=0;i<len(stocks);i++{
-				if stocks[i].Code==args[1]{
+			for i := 0; i < len(stocks); i++ {
+				if stocks[i].Code == args[1] {
 					println(stocks[i].Amount)
 					return nil
 				}
