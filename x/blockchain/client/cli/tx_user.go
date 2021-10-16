@@ -11,19 +11,18 @@ import (
 
 func CmdCreateUser() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-user [address] [name]",
+		Use:   "create-user [name]",
 		Short: "Create a new user",
-		Args:  cobra.ExactArgs(2),
+		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			address := args[0]
-			name := args[1]
+			name := args[0]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgCreateUser(clientCtx.GetFromAddress().String(), address, name)
+			msg := types.NewMsgCreateUser(clientCtx.GetFromAddress().String(), name)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -38,19 +37,18 @@ func CmdCreateUser() *cobra.Command {
 
 func CmdUpdateUser() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-user [address] [name]",
+		Use:   "update-user [name]",
 		Short: "Update a user",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			address := args[0]
-			name := args[1]
+			name := args[0]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgUpdateUser(clientCtx.GetFromAddress().String(), address, name)
+			msg := types.NewMsgUpdateUser(clientCtx.GetFromAddress().String(), name)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

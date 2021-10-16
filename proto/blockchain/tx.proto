@@ -41,21 +41,18 @@ message MsgDeleteStockDataResponse { }
 
 message MsgCreateUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgCreateUserResponse { }
 
 message MsgUpdateUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgUpdateUserResponse { }
 
 message MsgDeleteUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgDeleteUserResponse { }
