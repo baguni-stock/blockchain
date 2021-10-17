@@ -377,6 +377,8 @@ paths:
                   properties:
                     creator:
                       type: string
+                    address:
+                      type: string
                     name:
                       type: string
               pagination:
@@ -487,6 +489,8 @@ paths:
                 type: object
                 properties:
                   creator:
+                    type: string
+                  address:
                     type: string
                   name:
                     type: string
@@ -19748,6 +19752,8 @@ definitions:
           properties:
             creator:
               type: string
+            address:
+              type: string
             name:
               type: string
       pagination:
@@ -19826,6 +19832,8 @@ definitions:
         properties:
           creator:
             type: string
+          address:
+            type: string
           name:
             type: string
   chainstockproject.blockchain.blockchain.Stock:
@@ -19879,6 +19887,8 @@ definitions:
     type: object
     properties:
       creator:
+        type: string
+      address:
         type: string
       name:
         type: string
