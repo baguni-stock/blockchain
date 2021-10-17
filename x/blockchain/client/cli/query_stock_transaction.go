@@ -55,7 +55,6 @@ func CmdShowStockTransaction() *cobra.Command {
 			params := &types.QueryGetStockTransactionRequest{
 				Creator: args[0],
 			}
-			clientCtx.GetFromAddress().String()
 
 			res, err := queryClient.StockTransaction(context.Background(), params)
 			if err != nil {

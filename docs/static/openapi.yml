@@ -31,9 +31,11 @@ paths:
                           type:
                             type: string
                           code:
-                            type: string
+                            type: integer
+                            format: int32
                           amount:
-                            type: string
+                            type: integer
+                            format: int32
               pagination:
                 type: object
                 properties:
@@ -153,9 +155,11 @@ paths:
                         type:
                           type: string
                         code:
-                          type: string
+                          type: integer
+                          format: int32
                         amount:
-                          type: string
+                          type: integer
+                          format: int32
         default:
           description: An unexpected error response.
           schema:
@@ -204,11 +208,14 @@ paths:
                         type: object
                         properties:
                           code:
-                            type: string
+                            type: integer
+                            format: int32
                           count:
-                            type: string
-                          amount:
-                            type: string
+                            type: integer
+                            format: int32
+                          purchasAmount:
+                            type: integer
+                            format: int32
               pagination:
                 type: object
                 properties:
@@ -324,11 +331,14 @@ paths:
                       type: object
                       properties:
                         code:
-                          type: string
+                          type: integer
+                          format: int32
                         count:
-                          type: string
-                        amount:
-                          type: string
+                          type: integer
+                          format: int32
+                        purchasAmount:
+                          type: integer
+                          format: int32
         default:
           description: An unexpected error response.
           schema:
@@ -19612,11 +19622,14 @@ definitions:
     type: object
     properties:
       code:
-        type: string
+        type: integer
+        format: int32
       count:
-        type: string
-      amount:
-        type: string
+        type: integer
+        format: int32
+      purchasAmount:
+        type: integer
+        format: int32
   chainstockproject.blockchain.blockchain.MsgCreateStockDataResponse:
     type: object
   chainstockproject.blockchain.blockchain.MsgCreateStockTransactionResponse:
@@ -19653,9 +19666,11 @@ definitions:
                   type:
                     type: string
                   code:
-                    type: string
+                    type: integer
+                    format: int32
                   amount:
-                    type: string
+                    type: integer
+                    format: int32
       pagination:
         type: object
         properties:
@@ -19697,11 +19712,14 @@ definitions:
                 type: object
                 properties:
                   code:
-                    type: string
+                    type: integer
+                    format: int32
                   count:
-                    type: string
-                  amount:
-                    type: string
+                    type: integer
+                    format: int32
+                  purchasAmount:
+                    type: integer
+                    format: int32
       pagination:
         type: object
         properties:
@@ -19782,9 +19800,11 @@ definitions:
                 type:
                   type: string
                 code:
-                  type: string
+                  type: integer
+                  format: int32
                 amount:
-                  type: string
+                  type: integer
+                  format: int32
   chainstockproject.blockchain.blockchain.QueryGetStockTransactionResponse:
     type: object
     properties:
@@ -19799,11 +19819,14 @@ definitions:
               type: object
               properties:
                 code:
-                  type: string
+                  type: integer
+                  format: int32
                 count:
-                  type: string
-                amount:
-                  type: string
+                  type: integer
+                  format: int32
+                purchasAmount:
+                  type: integer
+                  format: int32
   chainstockproject.blockchain.blockchain.QueryGetUserResponse:
     type: object
     properties:
@@ -19820,9 +19843,11 @@ definitions:
       type:
         type: string
       code:
-        type: string
+        type: integer
+        format: int32
       amount:
-        type: string
+        type: integer
+        format: int32
   chainstockproject.blockchain.blockchain.StockData:
     type: object
     properties:
@@ -19838,9 +19863,11 @@ definitions:
             type:
               type: string
             code:
-              type: string
+              type: integer
+              format: int32
             amount:
-              type: string
+              type: integer
+              format: int32
   chainstockproject.blockchain.blockchain.StockTransaction:
     type: object
     properties:
@@ -19852,11 +19879,14 @@ definitions:
           type: object
           properties:
             code:
-              type: string
+              type: integer
+              format: int32
             count:
-              type: string
-            amount:
-              type: string
+              type: integer
+              format: int32
+            purchasAmount:
+              type: integer
+              format: int32
   chainstockproject.blockchain.blockchain.User:
     type: object
     properties:

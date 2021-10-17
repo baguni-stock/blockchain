@@ -5,11 +5,16 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 
 import "gogoproto/gogo.proto";
 
+message BoughtStock{
+  int32 amount = 1;
+  int32 count = 2;
+  string date = 3;
+}
 
 message HoldingStock {
-  string code = 1;
-  string count = 2;
-  string amount = 3;
+  int32 code = 1;
+  int32 count = 2;
+  int32 purchas_amount = 3;
 }
 
 message StockTransaction {

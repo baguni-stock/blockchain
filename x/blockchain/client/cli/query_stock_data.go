@@ -4,9 +4,11 @@ import (
 	"context"
 
 	"errors"
+
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 )
 
@@ -91,7 +93,11 @@ func CmdShowStockDataCode() *cobra.Command {
 			}
 			stocks := res.StockData.Stocks
 			for i := 0; i < len(stocks); i++ {
-				if stocks[i].Code == args[1] {
+				code, err := cast.ToInt32E(args[1])
+				if err != nil {
+					return err
+				}
+				if stocks[i].Code == code {
 					println(stocks[i].Amount)
 					return nil
 				}

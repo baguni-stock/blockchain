@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
@@ -19,10 +20,18 @@ func CmdCreateStockData() *cobra.Command {
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i += 3 {
+				code, err := cast.ToInt32E(args[i+1])
+				if err != nil {
+					return err
+				}
+				amount, err := cast.ToInt32E(args[i+2])
+				if err != nil {
+					return err
+				}
 				stock := types.Stock{
 					Type:   args[i],
-					Code:   args[i+1],
-					Amount: args[i+2],
+					Code:   code,
+					Amount: amount,
 				}
 				stocks = append(stocks, &stock)
 			}
@@ -55,10 +64,18 @@ func CmdUpdateStockData() *cobra.Command {
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i += 3 {
+				code, err := cast.ToInt32E(args[i+1])
+				if err != nil {
+					return err
+				}
+				amount, err := cast.ToInt32E(args[i+2])
+				if err != nil {
+					return err
+				}
 				stock := types.Stock{
 					Type:   args[i],
-					Code:   args[i+1],
-					Amount: args[i+2],
+					Code:   code,
+					Amount: amount,
 				}
 				stock_pointer := &stock
 				stocks = append(stocks, stock_pointer)

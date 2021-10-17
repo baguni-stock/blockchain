@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
@@ -15,8 +16,15 @@ func CmdCreateStockTransaction() *cobra.Command {
 		Short: "Create a new stock-transaction",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			code := args[0]
-			count := args[1]
+			code, err := cast.ToInt32E(args[0])
+			if err != nil {
+				return err
+			}
+
+			count, err := cast.ToInt32E(args[1])
+			if err != nil {
+				return err
+			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -40,10 +48,16 @@ func CmdDeleteStockTransaction() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "delete-stock-transaction  [code] [count]",
 		Short: "Delete a stock-transaction",
-		Args:  cobra.ExactArgs(1),
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			code := args[0]
-			count := args[1]
+			code, err := cast.ToInt32E(args[0])
+			if err != nil {
+				return err
+			}
+			count, err := cast.ToInt32E(args[1])
+			if err != nil {
+				return err
+			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
