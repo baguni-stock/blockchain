@@ -12,11 +12,6 @@ import (
 func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (*types.MsgCreateUserResponse, error) {
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
-	root_address := "cosmos1s3pzgpduvnq4r59mjx0vmdzfttqkhywwj7f8lk"
-	if root_address != msg.Creator{
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("creator not root %+v", msg.Creator))
-	}
-
 	// Check if the value already exists_
 	_, isFound := k.GetUser(ctx, msg.Name)
 	if isFound {
@@ -26,14 +21,13 @@ func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (
 	// check if creator already create user
 	user_list := k.GetAllUser(ctx)
 	for i := 0; i < len(user_list); i++ {
-		if user_list[i].Address == msg.Address {
-			return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("address %v already registered", msg.Address))
+		if user_list[i].Creator == msg.Creator {
+			return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("creator %v already registered", msg.Creator))
 		}
 	}
 
 	var user = types.User{
 		Creator: msg.Creator,
-		Address: msg.Address,
 		Name:    msg.Name,
 	}
 
@@ -45,7 +39,7 @@ func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (
 	k.bankKeeper.MintCoins(ctx, types.ModuleName, sdk.NewCoins(mint_coin...))
 
 	// address to account
-	user_address, err := sdk.AccAddressFromBech32(user.Address)
+	user_address, err := sdk.AccAddressFromBech32(user.Creator)
 	if err != nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintln(err))
 	}
@@ -79,7 +73,6 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 
 	var user = types.User{
 		Creator: msg.Creator,
-		Address:    msg.Address,
 		Name:    msg.Name,
 	}
 

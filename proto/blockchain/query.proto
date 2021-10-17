@@ -4,6 +4,7 @@ package chainstockproject.blockchain.blockchain;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "blockchain/stock_transaction.proto";
 import "blockchain/stock_data.proto";
 import "blockchain/user.proto";
 
@@ -12,6 +13,17 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+
+	// Queries a stockTransaction by index.
+	rpc StockTransaction(QueryGetStockTransactionRequest) returns (QueryGetStockTransactionResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockTransaction/{creator}";
+	}
+
+	// Queries a list of stockTransaction items.
+	rpc StockTransactionAll(QueryAllStockTransactionRequest) returns (QueryAllStockTransactionResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockTransaction";
+	}
+
 
 	// Queries a stockData by date.
 	rpc StockData(QueryGetStockDataRequest) returns (QueryGetStockDataResponse) {
@@ -37,6 +49,22 @@ service Query {
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetStockTransactionRequest {
+	string creator = 1;
+}
+
+message QueryGetStockTransactionResponse {
+	StockTransaction StockTransaction = 1;
+}
+
+message QueryAllStockTransactionRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllStockTransactionResponse {
+	repeated StockTransaction StockTransaction = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
 message QueryGetStockDataRequest {
 	string date = 1;
 }

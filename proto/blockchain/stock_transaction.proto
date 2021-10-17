@@ -1,0 +1,23 @@
+syntax = "proto3";
+package chainstockproject.blockchain.blockchain;
+
+option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types";
+
+import "gogoproto/gogo.proto";
+
+message BoughtStock{
+  int32 amount = 1;
+  int32 count = 2;
+  string date = 3;
+}
+
+message HoldingStock {
+  int32 code = 1;
+  int32 count = 2;
+  int32 purchas_amount = 3;
+}
+
+message StockTransaction {
+  string creator = 1;
+  repeated HoldingStock holding_stocks=2;
+}

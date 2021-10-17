@@ -1,6 +1,7 @@
 package cli
 
 import (
+	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
@@ -9,20 +10,28 @@ import (
 	"github.com/cosmos/cosmos-sdk/client/tx"
 )
 
-func CmdCreateUser() *cobra.Command {
+func CmdCreateStockTransaction() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-user [name]",
-		Short: "Create a new user",
-		Args:  cobra.ExactArgs(1),
+		Use:   "create-stock-transaction [code] [count]",
+		Short: "Create a new stock-transaction",
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			name := args[0]
+			code, err := cast.ToInt32E(args[0])
+			if err != nil {
+				return err
+			}
+
+			count, err := cast.ToInt32E(args[1])
+			if err != nil {
+				return err
+			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgCreateUser(clientCtx.GetFromAddress().String(), name)
+			msg := types.NewMsgCreateStockTransaction(clientCtx.GetFromAddress().String(), code, count)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -35,46 +44,27 @@ func CmdCreateUser() *cobra.Command {
 	return cmd
 }
 
-func CmdUpdateUser() *cobra.Command {
+func CmdDeleteStockTransaction() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-user [name]",
-		Short: "Update a user",
-		Args:  cobra.ExactArgs(1),
+		Use:   "delete-stock-transaction  [code] [count]",
+		Short: "Delete a stock-transaction",
+		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			name := args[0]
+			code, err := cast.ToInt32E(args[0])
+			if err != nil {
+				return err
+			}
+			count, err := cast.ToInt32E(args[1])
+			if err != nil {
+				return err
+			}
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgUpdateUser(clientCtx.GetFromAddress().String(), name)
-			if err := msg.ValidateBasic(); err != nil {
-				return err
-			}
-			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
-		},
-	}
-
-	flags.AddTxFlagsToCmd(cmd)
-
-	return cmd
-}
-
-func CmdDeleteUser() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "delete-user [name]",
-		Short: "Delete a user",
-		Args:  cobra.ExactArgs(1),
-		RunE: func(cmd *cobra.Command, args []string) error {
-			name := args[0]
-
-			clientCtx, err := client.GetClientTxContext(cmd)
-			if err != nil {
-				return err
-			}
-
-			msg := types.NewMsgDeleteUser(clientCtx.GetFromAddress().String(), name)
+			msg := types.NewMsgDeleteStockTransaction(clientCtx.GetFromAddress().String(), code, count)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}

@@ -2,6 +2,7 @@ package types
 
 import sdk "github.com/cosmos/cosmos-sdk/types"
 import "github.com/cosmos/cosmos-sdk/x/bank/types"
+
 // BankKeeper defines the expected bank keepe
 type BankKeeper interface {
 	ExportGenesis(sdk.Context) *types.GenesisState

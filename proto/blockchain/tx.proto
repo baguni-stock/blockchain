@@ -2,6 +2,7 @@ syntax = "proto3";
 package chainstockproject.blockchain.blockchain;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "blockchain/stock_transaction.proto";
 import "blockchain/stock_data.proto";
 import "blockchain/user.proto";
 
@@ -10,6 +11,8 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateStockTransaction(MsgCreateStockTransaction) returns (MsgCreateStockTransactionResponse);
+  rpc DeleteStockTransaction(MsgDeleteStockTransaction) returns (MsgDeleteStockTransactionResponse);
   rpc CreateStockData(MsgCreateStockData) returns (MsgCreateStockDataResponse);
   rpc UpdateStockData(MsgUpdateStockData) returns (MsgUpdateStockDataResponse);
   rpc DeleteStockData(MsgDeleteStockData) returns (MsgDeleteStockDataResponse);
@@ -19,6 +22,21 @@ service Msg {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateStockTransaction {
+  string creator = 1;
+  int32 code = 2;
+  int32 count = 3;
+}
+message MsgCreateStockTransactionResponse { }
+
+message MsgDeleteStockTransaction {
+  string creator = 1;
+  int32 code = 2;
+  int32 count = 3;
+}
+
+message MsgDeleteStockTransactionResponse { }
+
 message MsgCreateStockData {
   string creator = 1;
   string date = 2;
@@ -41,21 +59,18 @@ message MsgDeleteStockDataResponse { }
 
 message MsgCreateUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgCreateUserResponse { }
 
 message MsgUpdateUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgUpdateUserResponse { }
 
 message MsgDeleteUser {
   string creator = 1;
-  string address = 2;
-  string name = 3;
+  string name = 2;
 }
 message MsgDeleteUserResponse { }
