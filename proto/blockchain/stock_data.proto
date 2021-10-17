@@ -7,7 +7,7 @@ import "gogoproto/gogo.proto";
 
 message Stock {
   string type = 1;
-  int32 code = 2;
+  string code = 2;
   int32 amount = 3;
 }
 

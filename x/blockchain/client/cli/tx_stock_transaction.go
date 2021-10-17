@@ -16,11 +16,7 @@ func CmdCreateStockTransaction() *cobra.Command {
 		Short: "Create a new stock-transaction",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			code, err := cast.ToInt32E(args[0])
-			if err != nil {
-				return err
-			}
-
+			code := args[0]
 			count, err := cast.ToInt32E(args[1])
 			if err != nil {
 				return err
@@ -50,10 +46,7 @@ func CmdDeleteStockTransaction() *cobra.Command {
 		Short: "Delete a stock-transaction",
 		Args:  cobra.ExactArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			code, err := cast.ToInt32E(args[0])
-			if err != nil {
-				return err
-			}
+			code := args[0]
 			count, err := cast.ToInt32E(args[1])
 			if err != nil {
 				return err

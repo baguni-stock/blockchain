@@ -20,16 +20,14 @@ func CmdCreateStockData() *cobra.Command {
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i += 3 {
-				code, err := cast.ToInt32E(args[i+1])
-				if err != nil {
-					return err
-				}
+				stock_type := args[i]
+				code := args[i+1]
 				amount, err := cast.ToInt32E(args[i+2])
 				if err != nil {
 					return err
 				}
 				stock := types.Stock{
-					Type:   args[i],
+					Type:   stock_type,
 					Code:   code,
 					Amount: amount,
 				}
@@ -64,16 +62,14 @@ func CmdUpdateStockData() *cobra.Command {
 
 			var stocks []*types.Stock
 			for i := 1; i < len(args); i += 3 {
-				code, err := cast.ToInt32E(args[i+1])
-				if err != nil {
-					return err
-				}
+				stock_type := args[i]
+				code := args[i+1]
 				amount, err := cast.ToInt32E(args[i+2])
 				if err != nil {
 					return err
 				}
 				stock := types.Stock{
-					Type:   args[i],
+					Type:   stock_type,
 					Code:   code,
 					Amount: amount,
 				}

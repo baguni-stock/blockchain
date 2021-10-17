@@ -31,8 +31,7 @@ paths:
                           type:
                             type: string
                           code:
-                            type: integer
-                            format: int32
+                            type: string
                           amount:
                             type: integer
                             format: int32
@@ -155,8 +154,7 @@ paths:
                         type:
                           type: string
                         code:
-                          type: integer
-                          format: int32
+                          type: string
                         amount:
                           type: integer
                           format: int32
@@ -208,8 +206,7 @@ paths:
                         type: object
                         properties:
                           code:
-                            type: integer
-                            format: int32
+                            type: string
                           count:
                             type: integer
                             format: int32
@@ -331,8 +328,7 @@ paths:
                       type: object
                       properties:
                         code:
-                          type: integer
-                          format: int32
+                          type: string
                         count:
                           type: integer
                           format: int32
@@ -19622,8 +19618,7 @@ definitions:
     type: object
     properties:
       code:
-        type: integer
-        format: int32
+        type: string
       count:
         type: integer
         format: int32
@@ -19666,8 +19661,7 @@ definitions:
                   type:
                     type: string
                   code:
-                    type: integer
-                    format: int32
+                    type: string
                   amount:
                     type: integer
                     format: int32
@@ -19712,8 +19706,7 @@ definitions:
                 type: object
                 properties:
                   code:
-                    type: integer
-                    format: int32
+                    type: string
                   count:
                     type: integer
                     format: int32
@@ -19800,8 +19793,7 @@ definitions:
                 type:
                   type: string
                 code:
-                  type: integer
-                  format: int32
+                  type: string
                 amount:
                   type: integer
                   format: int32
@@ -19819,8 +19811,7 @@ definitions:
               type: object
               properties:
                 code:
-                  type: integer
-                  format: int32
+                  type: string
                 count:
                   type: integer
                   format: int32
@@ -19843,8 +19834,7 @@ definitions:
       type:
         type: string
       code:
-        type: integer
-        format: int32
+        type: string
       amount:
         type: integer
         format: int32
@@ -19863,8 +19853,7 @@ definitions:
             type:
               type: string
             code:
-              type: integer
-              format: int32
+              type: string
             amount:
               type: integer
               format: int32
@@ -19879,8 +19868,7 @@ definitions:
           type: object
           properties:
             code:
-              type: integer
-              format: int32
+              type: string
             count:
               type: integer
               format: int32

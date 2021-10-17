@@ -12,7 +12,7 @@ message BoughtStock{
 }
 
 message HoldingStock {
-  int32 code = 1;
+  string code = 1;
   int32 count = 2;
   int32 purchas_amount = 3;
 }

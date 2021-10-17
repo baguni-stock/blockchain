@@ -7,7 +7,7 @@ import (
 
 var _ sdk.Msg = &MsgCreateStockTransaction{}
 
-func NewMsgCreateStockTransaction(creator string, code int32, count int32) *MsgCreateStockTransaction {
+func NewMsgCreateStockTransaction(creator string, code string, count int32) *MsgCreateStockTransaction {
 	return &MsgCreateStockTransaction{
 		Creator: creator,
 		Code:    code,
@@ -46,7 +46,7 @@ func (msg *MsgCreateStockTransaction) ValidateBasic() error {
 
 var _ sdk.Msg = &MsgDeleteStockTransaction{}
 
-func NewMsgDeleteStockTransaction(creator string, code int32, count int32) *MsgDeleteStockTransaction {
+func NewMsgDeleteStockTransaction(creator string, code string, count int32) *MsgDeleteStockTransaction {
 	return &MsgDeleteStockTransaction{
 		Creator: creator,
 		Code:    code,

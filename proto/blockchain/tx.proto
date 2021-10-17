@@ -24,14 +24,14 @@ service Msg {
 // this line is used by starport scaffolding # proto/tx/message
 message MsgCreateStockTransaction {
   string creator = 1;
-  int32 code = 2;
+  string code = 2;
   int32 count = 3;
 }
 message MsgCreateStockTransactionResponse { }
 
 message MsgDeleteStockTransaction {
   string creator = 1;
-  int32 code = 2;
+  string code = 2;
   int32 count = 3;
 }
 
