@@ -21,20 +21,15 @@ paths:
                   properties:
                     creator:
                       type: string
+                    code:
+                      type: string
+                    marketType:
+                      type: string
+                    amount:
+                      type: integer
+                      format: int32
                     date:
                       type: string
-                    stocks:
-                      type: array
-                      items:
-                        type: object
-                        properties:
-                          type:
-                            type: string
-                          code:
-                            type: string
-                          amount:
-                            type: integer
-                            format: int32
               pagination:
                 type: object
                 properties:
@@ -129,7 +124,7 @@ paths:
           type: boolean
       tags:
         - Query
-  '/chainstock-project/blockchain/blockchain/stockData/{date}':
+  '/chainstock-project/blockchain/blockchain/stockData/{code}':
     get:
       summary: Queries a stockData by date.
       operationId: ChainstockprojectBlockchainBlockchainStockData
@@ -144,20 +139,15 @@ paths:
                 properties:
                   creator:
                     type: string
+                  code:
+                    type: string
+                  marketType:
+                    type: string
+                  amount:
+                    type: integer
+                    format: int32
                   date:
                     type: string
-                  stocks:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        type:
-                          type: string
-                        code:
-                          type: string
-                        amount:
-                          type: integer
-                          format: int32
         default:
           description: An unexpected error response.
           schema:
@@ -177,7 +167,7 @@ paths:
                       type: string
                   additionalProperties: {}
       parameters:
-        - name: date
+        - name: code
           in: path
           required: true
           type: string
@@ -19655,20 +19645,15 @@ definitions:
           properties:
             creator:
               type: string
+            code:
+              type: string
+            marketType:
+              type: string
+            amount:
+              type: integer
+              format: int32
             date:
               type: string
-            stocks:
-              type: array
-              items:
-                type: object
-                properties:
-                  type:
-                    type: string
-                  code:
-                    type: string
-                  amount:
-                    type: integer
-                    format: int32
       pagination:
         type: object
         properties:
@@ -19789,20 +19774,15 @@ definitions:
         properties:
           creator:
             type: string
+          code:
+            type: string
+          marketType:
+            type: string
+          amount:
+            type: integer
+            format: int32
           date:
             type: string
-          stocks:
-            type: array
-            items:
-              type: object
-              properties:
-                type:
-                  type: string
-                code:
-                  type: string
-                amount:
-                  type: integer
-                  format: int32
   chainstockproject.blockchain.blockchain.QueryGetStockTransactionResponse:
     type: object
     properties:
@@ -19836,35 +19816,20 @@ definitions:
             type: string
           name:
             type: string
-  chainstockproject.blockchain.blockchain.Stock:
-    type: object
-    properties:
-      type:
-        type: string
-      code:
-        type: string
-      amount:
-        type: integer
-        format: int32
   chainstockproject.blockchain.blockchain.StockData:
     type: object
     properties:
       creator:
         type: string
+      code:
+        type: string
+      marketType:
+        type: string
+      amount:
+        type: integer
+        format: int32
       date:
         type: string
-      stocks:
-        type: array
-        items:
-          type: object
-          properties:
-            type:
-              type: string
-            code:
-              type: string
-            amount:
-              type: integer
-              format: int32
   chainstockproject.blockchain.blockchain.StockTransaction:
     type: object
     properties:

@@ -27,7 +27,7 @@ service Query {
 
 	// Queries a stockData by date.
 	rpc StockData(QueryGetStockDataRequest) returns (QueryGetStockDataResponse) {
-		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockData/{date}";
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockData/{code}";
 	}
 
 	// Queries a list of stockData items.
@@ -66,7 +66,7 @@ message QueryAllStockTransactionResponse {
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
 message QueryGetStockDataRequest {
-	string date = 1;
+	string code = 1;
 }
 
 message QueryGetStockDataResponse {
@@ -81,6 +81,7 @@ message QueryAllStockDataResponse {
 	repeated StockData StockData = 1;
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
+
 message QueryGetUserRequest {
 	string name = 1;
 }

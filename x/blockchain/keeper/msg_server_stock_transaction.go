@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"strconv"
-	"time"
 
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -25,26 +24,13 @@ func (k msgServer) CreateStockTransaction(goCtx context.Context, msg *types.MsgC
 	}
 
 	//stock code의 가격(amount) 얻기
-	var amount int32 = 0
-	utc := time.Now().UTC()
-	loc, _ := time.LoadLocation("Asia/Seoul")
-	kst := utc.In(loc)
-	date := kst.Format("2006-01-02")
-	stock_data, isFound := k.GetStockData(ctx, date)
+	stock_data, isFound := k.GetStockData(ctx, msg.Code)
 	if !isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "not exists today sotck data")
 
 	}
 
-	for i := 0; i < len(stock_data.Stocks); i++ {
-		if stock_data.Stocks[i].Code == msg.Code {
-			amount = stock_data.Stocks[i].Amount
-			break
-		}
-	}
-	if amount == 0 {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "not exists stock code")
-	}
+	amount := stock_data.Amount
 	total_amount := amount * msg.Count
 
 	// 주식보유 체크 & 구매한 주식 보유량과 매도금액 증가
@@ -125,26 +111,13 @@ func (k msgServer) DeleteStockTransaction(goCtx context.Context, msg *types.MsgD
 	}
 
 	//stock code의 가격(amount) 얻기
-	var amount int32 = 0
-	utc := time.Now().UTC()
-	loc, _ := time.LoadLocation("Asia/Seoul")
-	kst := utc.In(loc)
-	date := kst.Format("2006-01-02")
-	stock_data, isFound := k.GetStockData(ctx, date)
+	stock_data, isFound := k.GetStockData(ctx, msg.Code)
 	if !isFound {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "not exists today sotck data")
 
 	}
 
-	for i := 0; i < len(stock_data.Stocks); i++ {
-		if stock_data.Stocks[i].Code == msg.Code {
-			amount = stock_data.Stocks[i].Amount
-			break
-		}
-	}
-	if amount == 0 {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, "not exists stock code")
-	}
+	amount := stock_data.Amount
 	total_amount := amount * msg.Count
 
 	// 남은주식 만큼 보유량 및 매수금액 차감

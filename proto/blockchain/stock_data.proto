@@ -3,16 +3,10 @@ package chainstockproject.blockchain.blockchain;
 
 option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types";
 
-import "gogoproto/gogo.proto";
-
-message Stock {
-  string type = 1;
-  string code = 2;
-  int32 amount = 3;
-}
-
 message StockData {
   string creator = 1;
-  string date = 2;
-  repeated Stock stocks = 3; 
+  string code = 2;
+  string market_type = 3;
+  int32 amount = 4;
+  string date = 5;
 }

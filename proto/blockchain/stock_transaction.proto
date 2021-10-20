@@ -3,8 +3,6 @@ package chainstockproject.blockchain.blockchain;
 
 option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types";
 
-import "gogoproto/gogo.proto";
-
 message BoughtStock{
   int32 amount = 1;
   int32 count = 2;

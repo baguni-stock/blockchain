@@ -7,11 +7,13 @@ import (
 
 var _ sdk.Msg = &MsgCreateStockData{}
 
-func NewMsgCreateStockData(creator string, date string, stocks []*Stock) *MsgCreateStockData {
+func NewMsgCreateStockData(creator string, code string, market_type string, amount int32, date string) *MsgCreateStockData {
 	return &MsgCreateStockData{
-		Creator: creator,
-		Date:    date,
-		Stocks:  stocks,
+		Creator:    creator,
+		Code:       code,
+		MatketType: market_type,
+		Amount:     amount,
+		Date:       date,
 	}
 }
 
@@ -46,11 +48,13 @@ func (msg *MsgCreateStockData) ValidateBasic() error {
 
 var _ sdk.Msg = &MsgUpdateStockData{}
 
-func NewMsgUpdateStockData(creator string, date string, stocks []*Stock) *MsgUpdateStockData {
+func NewMsgUpdateStockData(creator string, code string, market_type string, amount int32, date string) *MsgUpdateStockData {
 	return &MsgUpdateStockData{
-		Creator: creator,
-		Date:    date,
-		Stocks:  stocks,
+		Creator:    creator,
+		Code:       code,
+		MatketType: market_type,
+		Amount:     amount,
+		Date:       date,
 	}
 }
 
@@ -85,10 +89,10 @@ func (msg *MsgUpdateStockData) ValidateBasic() error {
 
 var _ sdk.Msg = &MsgDeleteStockData{}
 
-func NewMsgDeleteStockData(creator string, date string) *MsgDeleteStockData {
+func NewMsgDeleteStockData(creator string, code string) *MsgDeleteStockData {
 	return &MsgDeleteStockData{
 		Creator: creator,
-		Date:    date,
+		Code:    code,
 	}
 }
 func (msg *MsgDeleteStockData) Route() string {

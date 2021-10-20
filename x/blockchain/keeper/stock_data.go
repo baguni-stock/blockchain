@@ -10,7 +10,7 @@ import (
 func (k Keeper) SetStockData(ctx sdk.Context, stockData types.StockData) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockDataKey))
 	b := k.cdc.MustMarshalBinaryBare(&stockData)
-	store.Set(types.KeyPrefix(stockData.Date), b)
+	store.Set(types.KeyPrefix(stockData.Code), b)
 }
 
 // GetStockData returns a stockData from its date

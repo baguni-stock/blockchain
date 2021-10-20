@@ -3,8 +3,6 @@ package cli
 import (
 	"context"
 
-	"errors"
-
 	"github.com/chainstock-project/blockchain/x/blockchain/types"
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/client/flags"
@@ -46,7 +44,7 @@ func CmdListStockData() *cobra.Command {
 
 func CmdShowStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "show-stock-data [date]",
+		Use:   "show-stock-data [code]",
 		Short: "shows a stock-data",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
@@ -54,9 +52,7 @@ func CmdShowStockData() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryGetStockDataRequest{
-				Date: args[0],
-			}
+			params := &types.QueryGetStockDataRequest{}
 
 			res, err := queryClient.StockData(context.Background(), params)
 			if err != nil {
@@ -64,42 +60,6 @@ func CmdShowStockData() *cobra.Command {
 			}
 
 			return clientCtx.PrintProto(res)
-		},
-	}
-
-	flags.AddQueryFlagsToCmd(cmd)
-
-	return cmd
-}
-
-func CmdShowStockDataCode() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "show-stock-data-code [date] [code]",
-		Short: "shows a stock-data",
-		Args:  cobra.ExactArgs(2),
-		RunE: func(cmd *cobra.Command, args []string) error {
-			clientCtx := client.GetClientContextFromCmd(cmd)
-
-			queryClient := types.NewQueryClient(clientCtx)
-
-			params := &types.QueryGetStockDataRequest{
-				Date: args[0],
-			}
-
-			res, err := queryClient.StockData(context.Background(), params)
-			if err != nil {
-				return err
-			}
-			stocks := res.StockData.Stocks
-			for i := 0; i < len(stocks); i++ {
-				code := args[1]
-				if stocks[i].Code == code {
-					println(stocks[i].Amount)
-					return nil
-				}
-
-			}
-			return errors.New("can't find code")
 		},
 	}
 

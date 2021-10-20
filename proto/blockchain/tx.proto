@@ -39,21 +39,25 @@ message MsgDeleteStockTransactionResponse { }
 
 message MsgCreateStockData {
   string creator = 1;
-  string date = 2;
-  repeated Stock stocks = 3; 
+  string code = 2;
+  string matket_type = 3;
+  int32 amount = 4;
+  string date = 5;
 }
 message MsgCreateStockDataResponse { }
 
 message MsgUpdateStockData {
   string creator = 1;
-  string date = 2;
-  repeated Stock stocks = 3;
+  string code = 2;
+  string matket_type = 3;
+  int32 amount = 4;
+  string date = 5;
 }
 message MsgUpdateStockDataResponse { }
 
 message MsgDeleteStockData {
   string creator = 1;
-  string date = 2;
+  string code = 2;
 }
 message MsgDeleteStockDataResponse { }
 

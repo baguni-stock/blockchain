@@ -13,9 +13,9 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value already exists
-	_, isFound := k.GetStockData(ctx, msg.Date)
+	_, isFound := k.GetStockData(ctx, msg.Code)
 	if isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("date %v already set", msg.Date))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("Code %v already set", msg.Code))
 	}
 
 	root_address := "cosmos1s3pzgpduvnq4r59mjx0vmdzfttqkhywwj7f8lk"
@@ -24,9 +24,11 @@ func (k msgServer) CreateStockData(goCtx context.Context, msg *types.MsgCreateSt
 	}
 
 	var stockData = types.StockData{
-		Date:    msg.Date,
-		Creator: msg.Creator,
-		Stocks:  msg.Stocks,
+		Creator:    msg.Creator,
+		Code:       msg.Code,
+		MarketType: msg.MatketType,
+		Amount:     msg.Amount,
+		Date:       msg.Date,
 	}
 
 	k.SetStockData(
@@ -40,9 +42,9 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value exists
-	valFound, isFound := k.GetStockData(ctx, msg.Date)
+	valFound, isFound := k.GetStockData(ctx, msg.Code)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("Code %v not set", msg.Code))
 	}
 
 	// Checks if the the msg sender is the same as the current owner
@@ -51,9 +53,11 @@ func (k msgServer) UpdateStockData(goCtx context.Context, msg *types.MsgUpdateSt
 	}
 
 	var stockData = types.StockData{
-		Date:    msg.Date,
-		Creator: msg.Creator,
-		Stocks:  msg.Stocks,
+		Creator:    msg.Creator,
+		Code:       msg.Code,
+		MarketType: msg.MatketType,
+		Amount:     msg.Amount,
+		Date:       msg.Date,
 	}
 
 	k.SetStockData(ctx, stockData)
@@ -65,9 +69,9 @@ func (k msgServer) DeleteStockData(goCtx context.Context, msg *types.MsgDeleteSt
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	// Check if the value exists
-	valFound, isFound := k.GetStockData(ctx, msg.Date)
+	valFound, isFound := k.GetStockData(ctx, msg.Code)
 	if !isFound {
-		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("date %v not set", msg.Date))
+		return nil, sdkerrors.Wrap(sdkerrors.ErrKeyNotFound, fmt.Sprintf("Code %v not set", msg.Code))
 	}
 
 	// Checks if the the msg sender is the same as the current owner
@@ -75,7 +79,7 @@ func (k msgServer) DeleteStockData(goCtx context.Context, msg *types.MsgDeleteSt
 		return nil, sdkerrors.Wrap(sdkerrors.ErrUnauthorized, "incorrect owner")
 	}
 
-	k.RemoveStockData(ctx, msg.Date)
+	k.RemoveStockData(ctx, msg.Code)
 
 	return &types.MsgDeleteStockDataResponse{}, nil
 }

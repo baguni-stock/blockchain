@@ -12,34 +12,25 @@ import (
 
 func CmdCreateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-stock-data [date] [stock_type] [stock_code] [stock_amount]",
+		Use:   "create-stock-data [code] [market_type] [amount] [date]",
 		Short: "Create a new stock-data",
-		Args:  cobra.MinimumNArgs(3),
+		Args:  cobra.MinimumNArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			date := args[0]
-
-			var stocks []*types.Stock
-			for i := 1; i < len(args); i += 3 {
-				stock_type := args[i]
-				code := args[i+1]
-				amount, err := cast.ToInt32E(args[i+2])
-				if err != nil {
-					return err
-				}
-				stock := types.Stock{
-					Type:   stock_type,
-					Code:   code,
-					Amount: amount,
-				}
-				stocks = append(stocks, &stock)
-			}
-
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgCreateStockData(clientCtx.GetFromAddress().String(), date, stocks)
+			creator := clientCtx.GetFromAddress().String()
+			code := args[0]
+			market_type := args[1]
+			amount, err := cast.ToInt32E(args[2])
+			if err != nil {
+				return err
+			}
+			date := args[3]
+
+			msg := types.NewMsgCreateStockData(creator, code, market_type, amount, date)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -54,35 +45,24 @@ func CmdCreateStockData() *cobra.Command {
 
 func CmdUpdateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "update-stock-data [date] [stock_type] [stock_code] [stock_amount]",
+		Use:   "update-stock-data [code] [market_type] [amount] [date]",
 		Short: "Update a stock-data",
-		Args:  cobra.MinimumNArgs(3),
+		Args:  cobra.MinimumNArgs(4),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			date := args[0]
-
-			var stocks []*types.Stock
-			for i := 1; i < len(args); i += 3 {
-				stock_type := args[i]
-				code := args[i+1]
-				amount, err := cast.ToInt32E(args[i+2])
-				if err != nil {
-					return err
-				}
-				stock := types.Stock{
-					Type:   stock_type,
-					Code:   code,
-					Amount: amount,
-				}
-				stock_pointer := &stock
-				stocks = append(stocks, stock_pointer)
-			}
-
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
+			creator := clientCtx.GetFromAddress().String()
+			code := args[0]
+			market_type := args[1]
+			amount, err := cast.ToInt32E(args[2])
+			if err != nil {
+				return err
+			}
+			date := args[3]
 
-			msg := types.NewMsgUpdateStockData(clientCtx.GetFromAddress().String(), date, stocks)
+			msg := types.NewMsgUpdateStockData(creator, code, market_type, amount, date)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
@@ -97,18 +77,18 @@ func CmdUpdateStockData() *cobra.Command {
 
 func CmdDeleteStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "delete-stock-data [date]",
+		Use:   "delete-stock-data [code]",
 		Short: "Delete a stock-data",
 		Args:  cobra.ExactArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
-			date := args[0]
+			code := args[0]
 
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
 				return err
 			}
 
-			msg := types.NewMsgDeleteStockData(clientCtx.GetFromAddress().String(), date)
+			msg := types.NewMsgDeleteStockData(clientCtx.GetFromAddress().String(), code)
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
