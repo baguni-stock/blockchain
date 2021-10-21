@@ -19631,8 +19631,6 @@ definitions:
     type: object
   chainstockproject.blockchain.blockchain.MsgDeleteUserResponse:
     type: object
-  chainstockproject.blockchain.blockchain.MsgUpdateStockDataResponse:
-    type: object
   chainstockproject.blockchain.blockchain.MsgUpdateUserResponse:
     type: object
   chainstockproject.blockchain.blockchain.QueryAllStockDataResponse:

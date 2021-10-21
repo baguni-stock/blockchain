@@ -13,7 +13,6 @@ func RegisterCodec(cdc *codec.LegacyAmino) {
 	cdc.RegisterConcrete(&MsgDeleteStockTransaction{}, "blockchain/DeleteStockTransaction", nil)
 
 	cdc.RegisterConcrete(&MsgCreateStockData{}, "blockchain/CreateStockData", nil)
-	cdc.RegisterConcrete(&MsgUpdateStockData{}, "blockchain/UpdateStockData", nil)
 	cdc.RegisterConcrete(&MsgDeleteStockData{}, "blockchain/DeleteStockData", nil)
 
 	cdc.RegisterConcrete(&MsgCreateUser{}, "blockchain/CreateUser", nil)
@@ -30,7 +29,6 @@ func RegisterInterfaces(registry cdctypes.InterfaceRegistry) {
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),
 		&MsgCreateStockData{},
-		&MsgUpdateStockData{},
 		&MsgDeleteStockData{},
 	)
 	registry.RegisterImplementations((*sdk.Msg)(nil),

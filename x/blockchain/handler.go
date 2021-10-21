@@ -28,9 +28,6 @@ func NewHandler(k keeper.Keeper) sdk.Handler {
 		case *types.MsgCreateStockData:
 			res, err := msgServer.CreateStockData(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)
-		case *types.MsgUpdateStockData:
-			res, err := msgServer.UpdateStockData(sdk.WrapSDKContext(ctx), msg)
-			return sdk.WrapServiceResult(ctx, res, err)
 		case *types.MsgDeleteStockData:
 			res, err := msgServer.DeleteStockData(sdk.WrapSDKContext(ctx), msg)
 			return sdk.WrapServiceResult(ctx, res, err)

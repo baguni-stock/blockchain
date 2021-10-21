@@ -14,7 +14,6 @@ service Msg {
   rpc CreateStockTransaction(MsgCreateStockTransaction) returns (MsgCreateStockTransactionResponse);
   rpc DeleteStockTransaction(MsgDeleteStockTransaction) returns (MsgDeleteStockTransactionResponse);
   rpc CreateStockData(MsgCreateStockData) returns (MsgCreateStockDataResponse);
-  rpc UpdateStockData(MsgUpdateStockData) returns (MsgUpdateStockDataResponse);
   rpc DeleteStockData(MsgDeleteStockData) returns (MsgDeleteStockDataResponse);
   rpc CreateUser(MsgCreateUser) returns (MsgCreateUserResponse);
   rpc UpdateUser(MsgUpdateUser) returns (MsgUpdateUserResponse);
@@ -39,21 +38,9 @@ message MsgDeleteStockTransactionResponse { }
 
 message MsgCreateStockData {
   string creator = 1;
-  string code = 2;
-  string matket_type = 3;
-  int32 amount = 4;
-  string date = 5;
+  repeated StockData stocks = 2;
 }
 message MsgCreateStockDataResponse { }
-
-message MsgUpdateStockData {
-  string creator = 1;
-  string code = 2;
-  string matket_type = 3;
-  int32 amount = 4;
-  string date = 5;
-}
-message MsgUpdateStockDataResponse { }
 
 message MsgDeleteStockData {
   string creator = 1;

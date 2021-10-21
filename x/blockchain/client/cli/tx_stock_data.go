@@ -1,6 +1,8 @@
 package cli
 
 import (
+	"fmt"
+
 	"github.com/spf13/cast"
 	"github.com/spf13/cobra"
 
@@ -21,51 +23,33 @@ func CmdCreateStockData() *cobra.Command {
 				return err
 			}
 
+			var stocks []*types.StockData
 			creator := clientCtx.GetFromAddress().String()
-			code := args[0]
-			market_type := args[1]
-			amount, err := cast.ToInt32E(args[2])
-			if err != nil {
-				return err
+			for i := 0; i < len(args); i += 4 {
+				code := args[i]
+				market_type := args[i+1]
+				amount, err := cast.ToInt32E(args[i+2])
+				if err != nil {
+					return err
+				}
+				date := args[i+3]
+				stock := types.StockData{
+					Creator:    creator,
+					Code:       code,
+					MarketType: market_type,
+					Amount:     amount,
+					Date:       date,
+				}
+				fmt.Printf("%v\n", stock)
+				stocks = append(stocks, &stock)
 			}
-			date := args[3]
 
-			msg := types.NewMsgCreateStockData(creator, code, market_type, amount, date)
+			msg := types.NewMsgCreateStockData(creator, stocks)
+
 			if err := msg.ValidateBasic(); err != nil {
 				return err
 			}
-			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
-		},
-	}
 
-	flags.AddTxFlagsToCmd(cmd)
-
-	return cmd
-}
-
-func CmdUpdateStockData() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "update-stock-data [code] [market_type] [amount] [date]",
-		Short: "Update a stock-data",
-		Args:  cobra.MinimumNArgs(4),
-		RunE: func(cmd *cobra.Command, args []string) error {
-			clientCtx, err := client.GetClientTxContext(cmd)
-			if err != nil {
-				return err
-			}
-			creator := clientCtx.GetFromAddress().String()
-			code := args[0]
-			market_type := args[1]
-			amount, err := cast.ToInt32E(args[2])
-			if err != nil {
-				return err
-			}
-			date := args[3]
-
-			msg := types.NewMsgUpdateStockData(creator, code, market_type, amount, date)
-			if err := msg.ValidateBasic(); err != nil {
-				return err
-			}
 			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), msg)
 		},
 	}

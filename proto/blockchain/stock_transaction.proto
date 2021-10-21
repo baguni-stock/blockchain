@@ -3,12 +3,6 @@ package chainstockproject.blockchain.blockchain;
 
 option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types";
 
-message BoughtStock{
-  int32 amount = 1;
-  int32 count = 2;
-  string date = 3;
-}
-
 message HoldingStock {
   string code = 1;
   int32 count = 2;
