@@ -52,7 +52,9 @@ func CmdShowStockData() *cobra.Command {
 
 			queryClient := types.NewQueryClient(clientCtx)
 
-			params := &types.QueryGetStockDataRequest{}
+			params := &types.QueryGetStockDataRequest{
+				Code: args[0],
+			}
 
 			res, err := queryClient.StockData(context.Background(), params)
 			if err != nil {
