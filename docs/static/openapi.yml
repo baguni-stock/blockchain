@@ -23,6 +23,8 @@ paths:
                       type: string
                     code:
                       type: string
+                    name:
+                      type: string
                     marketType:
                       type: string
                     amount:
@@ -140,6 +142,8 @@ paths:
                   creator:
                     type: string
                   code:
+                    type: string
+                  name:
                     type: string
                   marketType:
                     type: string
@@ -19645,6 +19649,8 @@ definitions:
               type: string
             code:
               type: string
+            name:
+              type: string
             marketType:
               type: string
             amount:
@@ -19774,6 +19780,8 @@ definitions:
             type: string
           code:
             type: string
+          name:
+            type: string
           marketType:
             type: string
           amount:
@@ -19820,6 +19828,8 @@ definitions:
       creator:
         type: string
       code:
+        type: string
+      name:
         type: string
       marketType:
         type: string

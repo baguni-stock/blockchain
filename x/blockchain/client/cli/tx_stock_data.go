@@ -14,9 +14,9 @@ import (
 
 func CmdCreateStockData() *cobra.Command {
 	cmd := &cobra.Command{
-		Use:   "create-stock-data [code] [market_type] [amount] [date]",
+		Use:   "create-stock-data [code] [name] [market_type] [amount] [date]",
 		Short: "Create a new stock-data",
-		Args:  cobra.MinimumNArgs(4),
+		Args:  cobra.MinimumNArgs(5),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			clientCtx, err := client.GetClientTxContext(cmd)
 			if err != nil {
@@ -25,17 +25,19 @@ func CmdCreateStockData() *cobra.Command {
 
 			var stocks []*types.StockData
 			creator := clientCtx.GetFromAddress().String()
-			for i := 0; i < len(args); i += 4 {
+			for i := 0; i < len(args); i += 5 {
 				code := args[i]
-				market_type := args[i+1]
-				amount, err := cast.ToInt32E(args[i+2])
+				name := args[i+1]
+				market_type := args[i+2]
+				amount, err := cast.ToInt32E(args[i+3])
 				if err != nil {
 					return err
 				}
-				date := args[i+3]
+				date := args[i+4]
 				stock := types.StockData{
 					Creator:    creator,
 					Code:       code,
+					Name:       name,
 					MarketType: market_type,
 					Amount:     amount,
 					Date:       date,

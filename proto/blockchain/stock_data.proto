@@ -6,7 +6,8 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 message StockData {
   string creator = 1;
   string code = 2;
-  string market_type = 3;
-  int32 amount = 4;
-  string date = 5;
+  string name = 3;
+  string market_type = 4;
+  int32 amount = 5;
+  string date = 6;
 }
