@@ -69,3 +69,31 @@ func CmdShowStockTransaction() *cobra.Command {
 
 	return cmd
 }
+
+func CmdShowStockTransactionRecord() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:   "show-stock-transaction-record [address]",
+		Short: "shows a stock-transaction-record",
+		Args:  cobra.ExactArgs(1),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx := client.GetClientContextFromCmd(cmd)
+
+			queryClient := types.NewQueryClient(clientCtx)
+
+			params := &types.QueryGetStockTransactionRecordRequest{
+				Creator: args[0],
+			}
+
+			res, err := queryClient.StockTransactionRecord(context.Background(), params)
+			if err != nil {
+				return err
+			}
+
+			return clientCtx.PrintProto(res)
+		},
+	}
+
+	flags.AddQueryFlagsToCmd(cmd)
+
+	return cmd
+}

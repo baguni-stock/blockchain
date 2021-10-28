@@ -14,10 +14,10 @@ func (k Keeper) SetStockTransaction(ctx sdk.Context, stockTransaction types.Stoc
 }
 
 // GetStockTransaction returns a stockTransaction from its index
-func (k Keeper) GetStockTransaction(ctx sdk.Context, index string) (val types.StockTransaction, found bool) {
+func (k Keeper) GetStockTransaction(ctx sdk.Context, creator string) (val types.StockTransaction, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockTransactionKey))
 
-	b := store.Get(types.KeyPrefix(index))
+	b := store.Get(types.KeyPrefix(creator))
 	if b == nil {
 		return val, false
 	}
@@ -27,9 +27,9 @@ func (k Keeper) GetStockTransaction(ctx sdk.Context, index string) (val types.St
 }
 
 // RemoveStockTransaction removes a stockTransaction from the store
-func (k Keeper) RemoveStockTransaction(ctx sdk.Context, index string) {
+func (k Keeper) RemoveStockTransaction(ctx sdk.Context, creator string) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockTransactionKey))
-	store.Delete(types.KeyPrefix(index))
+	store.Delete(types.KeyPrefix(creator))
 }
 
 // GetAllStockTransaction returns all stockTransaction
@@ -41,6 +41,41 @@ func (k Keeper) GetAllStockTransaction(ctx sdk.Context) (list []types.StockTrans
 
 	for ; iterator.Valid(); iterator.Next() {
 		var val types.StockTransaction
+		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &val)
+		list = append(list, val)
+	}
+
+	return
+}
+
+func (k Keeper) SetStockTransactionRecord(ctx sdk.Context, stockTransactionRecord types.StockTransactionRecord) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockTransactionRecordKey))
+	b := k.cdc.MustMarshalBinaryBare(&stockTransactionRecord)
+	store.Set(types.KeyPrefix(stockTransactionRecord.Creator), b)
+}
+
+// GetStockTransaction returns a stockTransaction from its creator
+func (k Keeper) GetStockTransactionRecord(ctx sdk.Context, creator string) (val types.StockTransactionRecord, found bool) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockTransactionRecordKey))
+
+	b := store.Get(types.KeyPrefix(creator))
+	if b == nil {
+		return val, false
+	}
+
+	k.cdc.MustUnmarshalBinaryBare(b, &val)
+	return val, true
+}
+
+// GetAllStockTransaction returns all stockTransaction
+func (k Keeper) GetAllStockTransactionRecord(ctx sdk.Context) (list []types.StockTransactionRecord) {
+	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockTransactionRecordKey))
+	iterator := sdk.KVStorePrefixIterator(store, []byte{})
+
+	defer iterator.Close()
+
+	for ; iterator.Valid(); iterator.Next() {
+		var val types.StockTransactionRecord
 		k.cdc.MustUnmarshalBinaryBare(iterator.Value(), &val)
 		list = append(list, val)
 	}

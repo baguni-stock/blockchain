@@ -52,3 +52,17 @@ func (k Keeper) StockTransaction(c context.Context, req *types.QueryGetStockTran
 
 	return &types.QueryGetStockTransactionResponse{StockTransaction: &val}, nil
 }
+
+func (k Keeper) StockTransactionRecord(c context.Context, req *types.QueryGetStockTransactionRecordRequest) (*types.QueryGetStockTransactionRecordResponse, error) {
+	if req == nil {
+		return nil, status.Error(codes.InvalidArgument, "invalid request")
+	}
+	ctx := sdk.UnwrapSDKContext(c)
+
+	val, found := k.GetStockTransactionRecord(ctx, req.Creator)
+	if !found {
+		return nil, status.Error(codes.InvalidArgument, "not found")
+	}
+
+	return &types.QueryGetStockTransactionRecordResponse{StockTransactionRecord: &val}, nil
+}
