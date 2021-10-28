@@ -34,7 +34,6 @@ func GetTxCmd() *cobra.Command {
 	cmd.AddCommand(CmdDeleteStockTransaction())
 
 	cmd.AddCommand(CmdCreateStockData())
-	cmd.AddCommand(CmdUpdateStockData())
 	cmd.AddCommand(CmdDeleteStockData())
 
 	cmd.AddCommand(CmdCreateUser())

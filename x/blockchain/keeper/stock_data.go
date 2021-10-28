@@ -10,14 +10,14 @@ import (
 func (k Keeper) SetStockData(ctx sdk.Context, stockData types.StockData) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockDataKey))
 	b := k.cdc.MustMarshalBinaryBare(&stockData)
-	store.Set(types.KeyPrefix(stockData.Date), b)
+	store.Set(types.KeyPrefix(stockData.Code), b)
 }
 
 // GetStockData returns a stockData from its date
-func (k Keeper) GetStockData(ctx sdk.Context, date string) (val types.StockData, found bool) {
+func (k Keeper) GetStockData(ctx sdk.Context, code string) (val types.StockData, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockDataKey))
 
-	b := store.Get(types.KeyPrefix(date))
+	b := store.Get(types.KeyPrefix(code))
 	if b == nil {
 		return val, false
 	}
@@ -27,10 +27,10 @@ func (k Keeper) GetStockData(ctx sdk.Context, date string) (val types.StockData,
 }
 
 // GetStockData returns a stockData from its date
-func (k Keeper) GetLastStockData(ctx sdk.Context, date string) (val types.StockData, found bool) {
+func (k Keeper) GetLastStockData(ctx sdk.Context, code string) (val types.StockData, found bool) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockDataKey))
 
-	b := store.Get(types.KeyPrefix(date))
+	b := store.Get(types.KeyPrefix(code))
 	if b == nil {
 		return val, false
 	}
@@ -40,9 +40,9 @@ func (k Keeper) GetLastStockData(ctx sdk.Context, date string) (val types.StockD
 }
 
 // RemoveStockData removes a stockData from the store
-func (k Keeper) RemoveStockData(ctx sdk.Context, date string) {
+func (k Keeper) RemoveStockData(ctx sdk.Context, code string) {
 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefix(types.StockDataKey))
-	store.Delete(types.KeyPrefix(date))
+	store.Delete(types.KeyPrefix(code))
 }
 
 // GetAllStockData returns all stockData

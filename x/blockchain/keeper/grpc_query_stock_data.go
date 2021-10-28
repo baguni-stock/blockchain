@@ -45,7 +45,7 @@ func (k Keeper) StockData(c context.Context, req *types.QueryGetStockDataRequest
 	}
 	ctx := sdk.UnwrapSDKContext(c)
 
-	val, found := k.GetStockData(ctx, req.Date)
+	val, found := k.GetStockData(ctx, req.Code)
 	if !found {
 		return nil, status.Error(codes.InvalidArgument, "not found")
 	}
