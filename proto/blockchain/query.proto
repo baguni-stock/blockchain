@@ -24,6 +24,9 @@ service Query {
 		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockTransaction";
 	}
 
+	rpc StockTransactionRecord(QueryGetStockTransactionRecordRequest) returns (QueryGetStockTransactionRecordResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/stockTransactionRecord/{creator}";
+	}
 
 	// Queries a stockData by date.
 	rpc StockData(QueryGetStockDataRequest) returns (QueryGetStockDataResponse) {
@@ -65,6 +68,15 @@ message QueryAllStockTransactionResponse {
 	repeated StockTransaction StockTransaction = 1;
 	cosmos.base.query.v1beta1.PageResponse pagination = 2;
 }
+
+message QueryGetStockTransactionRecordRequest {
+	string creator = 1;
+}
+
+message QueryGetStockTransactionRecordResponse {
+	StockTransactionRecord StockTransactionRecord = 1;
+}
+
 message QueryGetStockDataRequest {
 	string code = 1;
 }

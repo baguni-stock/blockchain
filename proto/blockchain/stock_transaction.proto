@@ -13,3 +13,16 @@ message StockTransaction {
   string creator = 1;
   repeated HoldingStock holding_stocks=2;
 }
+
+message StockRecord{
+  string code = 1;
+  int32 count = 2;
+  int32 amount = 3;
+  string date = 4;
+  string record_type = 5;
+}
+
+message StockTransactionRecord{
+  string creator = 1;
+  repeated StockRecord stock_records = 2;
+}

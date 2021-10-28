@@ -354,6 +354,62 @@ paths:
           type: string
       tags:
         - Query
+  '/chainstock-project/blockchain/blockchain/stockTransactionRecord/{creator}':
+    get:
+      operationId: ChainstockprojectBlockchainBlockchainStockTransactionRecord
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              StockTransactionRecord:
+                type: object
+                properties:
+                  creator:
+                    type: string
+                  stockRecords:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        code:
+                          type: string
+                        count:
+                          type: integer
+                          format: int32
+                        amount:
+                          type: integer
+                          format: int32
+                        date:
+                          type: string
+                        recordType:
+                          type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: creator
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /chainstock-project/blockchain/blockchain/user:
     get:
       summary: Queries a list of user items.
@@ -19789,6 +19845,31 @@ definitions:
             format: int32
           date:
             type: string
+  chainstockproject.blockchain.blockchain.QueryGetStockTransactionRecordResponse:
+    type: object
+    properties:
+      StockTransactionRecord:
+        type: object
+        properties:
+          creator:
+            type: string
+          stockRecords:
+            type: array
+            items:
+              type: object
+              properties:
+                code:
+                  type: string
+                count:
+                  type: integer
+                  format: int32
+                amount:
+                  type: integer
+                  format: int32
+                date:
+                  type: string
+                recordType:
+                  type: string
   chainstockproject.blockchain.blockchain.QueryGetStockTransactionResponse:
     type: object
     properties:
@@ -19838,6 +19919,21 @@ definitions:
         format: int32
       date:
         type: string
+  chainstockproject.blockchain.blockchain.StockRecord:
+    type: object
+    properties:
+      code:
+        type: string
+      count:
+        type: integer
+        format: int32
+      amount:
+        type: integer
+        format: int32
+      date:
+        type: string
+      recordType:
+        type: string
   chainstockproject.blockchain.blockchain.StockTransaction:
     type: object
     properties:
@@ -19856,6 +19952,28 @@ definitions:
             purchasAmount:
               type: integer
               format: int32
+  chainstockproject.blockchain.blockchain.StockTransactionRecord:
+    type: object
+    properties:
+      creator:
+        type: string
+      stockRecords:
+        type: array
+        items:
+          type: object
+          properties:
+            code:
+              type: string
+            count:
+              type: integer
+              format: int32
+            amount:
+              type: integer
+              format: int32
+            date:
+              type: string
+            recordType:
+              type: string
   chainstockproject.blockchain.blockchain.User:
     type: object
     properties:

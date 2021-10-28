@@ -79,6 +79,31 @@ func (k msgServer) CreateStockTransaction(goCtx context.Context, msg *types.MsgC
 	}
 	k.bankKeeper.BurnCoins(ctx, types.ModuleName, burn_coin)
 
+	// 거래등록
+	stock_transaction_record, isFound := k.GetStockTransactionRecord(ctx, msg.Creator)
+	if !isFound {
+		var stock_records []*types.StockRecord
+		stock_transaction_record = types.StockTransactionRecord{
+			Creator:      msg.Creator,
+			StockRecords: stock_records,
+		}
+	}
+
+	stock_record := types.StockRecord{
+		Code:       msg.Code,
+		Count:      msg.Count,
+		Amount:     stock_data.Amount,
+		Date:       stock_data.Date,
+		RecordType: "BUY",
+	}
+
+	stock_transaction_record.StockRecords = append(stock_transaction_record.StockRecords, &stock_record)
+
+	k.SetStockTransactionRecord(
+		ctx,
+		stock_transaction_record,
+	)
+
 	return &types.MsgCreateStockTransactionResponse{}, nil
 
 }
@@ -153,6 +178,31 @@ func (k msgServer) DeleteStockTransaction(goCtx context.Context, msg *types.MsgD
 	if err != nil {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintln(err))
 	}
+
+	// 거래등록
+	stock_transaction_record, isFound := k.GetStockTransactionRecord(ctx, msg.Creator)
+	if !isFound {
+		var stock_records []*types.StockRecord
+		stock_transaction_record = types.StockTransactionRecord{
+			Creator:      msg.Creator,
+			StockRecords: stock_records,
+		}
+	}
+
+	stock_record := types.StockRecord{
+		Code:       msg.Code,
+		Count:      msg.Count,
+		Amount:     stock_data.Amount,
+		Date:       stock_data.Date,
+		RecordType: "SELL",
+	}
+
+	stock_transaction_record.StockRecords = append(stock_transaction_record.StockRecords, &stock_record)
+
+	k.SetStockTransactionRecord(
+		ctx,
+		stock_transaction_record,
+	)
 
 	return &types.MsgDeleteStockTransactionResponse{}, nil
 }
