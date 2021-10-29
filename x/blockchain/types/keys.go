@@ -40,3 +40,12 @@ const (
 const (
 	StockTransactionRecordKey = "StockTransactionRecord-value-"
 )
+
+const (
+	BoardKey      = "Board-value-"
+	BoardCountKey = "Board-count-"
+)
+
+const (
+	BoardCommentKey = "BoardComment-value-"
+)

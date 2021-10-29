@@ -4,6 +4,8 @@ package chainstockproject.blockchain.blockchain;
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 // this line is used by starport scaffolding # 1
+import "blockchain/board_comment.proto";
+import "blockchain/board.proto";
 import "blockchain/stock_transaction.proto";
 import "blockchain/stock_data.proto";
 import "blockchain/user.proto";
@@ -13,6 +15,21 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 // Query defines the gRPC querier service.
 service Query {
     // this line is used by starport scaffolding # 2
+
+	// Queries a boardComment by id.
+	rpc BoardComment(QueryGetBoardCommentRequest) returns (QueryGetBoardCommentResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/boardComment/{id}";
+	}
+
+	// Queries a board by id.
+	rpc Board(QueryGetBoardRequest) returns (QueryGetBoardResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/board/{id}";
+	}
+
+	// Queries a list of board items.
+	rpc BoardAll(QueryAllBoardRequest) returns (QueryAllBoardResponse) {
+		option (google.api.http).get = "/chainstock-project/blockchain/blockchain/board";
+	}
 
 	// Queries a stockTransaction by index.
 	rpc StockTransaction(QueryGetStockTransactionRequest) returns (QueryGetStockTransactionResponse) {
@@ -52,6 +69,30 @@ service Query {
 }
 
 // this line is used by starport scaffolding # 3
+message QueryGetBoardCommentRequest {
+	uint64 id = 1;
+}
+
+message QueryGetBoardCommentResponse {
+	BoardComment BoardComment = 1;
+}
+
+message QueryGetBoardRequest {
+	uint64 id = 1;
+}
+
+message QueryGetBoardResponse {
+	Board Board = 1;
+}
+
+message QueryAllBoardRequest {
+	cosmos.base.query.v1beta1.PageRequest pagination = 1;
+}
+
+message QueryAllBoardResponse {
+	repeated Board Board = 1;
+	cosmos.base.query.v1beta1.PageResponse pagination = 2;
+}
 message QueryGetStockTransactionRequest {
 	string creator = 1;
 }

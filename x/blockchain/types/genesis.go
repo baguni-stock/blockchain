@@ -13,6 +13,8 @@ func DefaultGenesis() *GenesisState {
 	return &GenesisState{
 		// this line is used by starport scaffolding # ibc/genesistype/default
 		// this line is used by starport scaffolding # genesis/types/default
+		BoardCommentList:     []*BoardComment{},
+		BoardList:            []*Board{},
 		StockTransactionList: []*StockTransaction{},
 		StockDataList:        []*StockData{},
 		UserList:             []*User{},
@@ -25,6 +27,24 @@ func (gs GenesisState) Validate() error {
 	// this line is used by starport scaffolding # ibc/genesistype/validate
 
 	// this line is used by starport scaffolding # genesis/types/validate
+	// Check for duplicated index in boardComment
+	boardCommentIdMap := make(map[uint64]bool)
+
+	for _, elem := range gs.BoardCommentList {
+		if _, ok := boardCommentIdMap[elem.Id]; ok {
+			return fmt.Errorf("duplicated id for boardComment")
+		}
+		boardCommentIdMap[elem.Id] = true
+	}
+	// Check for duplicated ID in board
+	boardIdMap := make(map[uint64]bool)
+
+	for _, elem := range gs.BoardList {
+		if _, ok := boardIdMap[elem.Id]; ok {
+			return fmt.Errorf("duplicated id for board")
+		}
+		boardIdMap[elem.Id] = true
+	}
 	// Check for duplicated index in stockTransaction
 	stockTransactionIndexMap := make(map[string]bool)
 
