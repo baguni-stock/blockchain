@@ -28,8 +28,6 @@ paths:
                       type: string
                     body:
                       type: string
-                    date:
-                      type: string
               pagination:
                 type: object
                 properties:
@@ -145,8 +143,6 @@ paths:
                   title:
                     type: string
                   body:
-                    type: string
-                  date:
                     type: string
         default:
           description: An unexpected error response.
@@ -19909,8 +19905,6 @@ definitions:
         type: string
       body:
         type: string
-      date:
-        type: string
   chainstockproject.blockchain.blockchain.BoardComment:
     type: object
     properties:
@@ -20001,8 +19995,6 @@ definitions:
             title:
               type: string
             body:
-              type: string
-            date:
               type: string
       pagination:
         type: object
@@ -20202,8 +20194,6 @@ definitions:
           title:
             type: string
           body:
-            type: string
-          date:
             type: string
   chainstockproject.blockchain.blockchain.QueryGetStockDataResponse:
     type: object
