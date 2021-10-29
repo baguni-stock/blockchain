@@ -10,6 +10,19 @@ import (
 // state.
 func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) {
 	// this line is used by starport scaffolding # genesis/module/init
+	// Set all the boardComment
+	for _, elem := range genState.BoardCommentList {
+		k.SetBoardComment(ctx, *elem)
+	}
+
+	// Set all the board
+	for _, elem := range genState.BoardList {
+		k.SetBoard(ctx, *elem)
+	}
+
+	// Set board count
+	k.SetBoardCount(ctx, genState.BoardCount)
+
 	// Set all the stockTransaction
 	for _, elem := range genState.StockTransactionList {
 		k.SetStockTransaction(ctx, *elem)
@@ -33,6 +46,23 @@ func ExportGenesis(ctx sdk.Context, k keeper.Keeper) *types.GenesisState {
 	genesis := types.DefaultGenesis()
 
 	// this line is used by starport scaffolding # genesis/module/export
+	// Get all boardComment
+	boardCommentList := k.GetAllBoardComment(ctx)
+	for _, elem := range boardCommentList {
+		elem := elem
+		genesis.BoardCommentList = append(genesis.BoardCommentList, &elem)
+	}
+
+	// Get all board
+	boardList := k.GetAllBoard(ctx)
+	for _, elem := range boardList {
+		elem := elem
+		genesis.BoardList = append(genesis.BoardList, &elem)
+	}
+
+	// Set the current count
+	genesis.BoardCount = k.GetBoardCount(ctx)
+
 	// Get all stockTransaction
 	stockTransactionList := k.GetAllStockTransaction(ctx)
 	for _, elem := range stockTransactionList {

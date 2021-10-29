@@ -2,6 +2,8 @@ syntax = "proto3";
 package chainstockproject.blockchain.blockchain;
 
 // this line is used by starport scaffolding # proto/tx/import
+import "blockchain/board_comment.proto";
+import "blockchain/board.proto";
 import "blockchain/stock_transaction.proto";
 import "blockchain/stock_data.proto";
 import "blockchain/user.proto";
@@ -11,6 +13,12 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 // Msg defines the Msg service.
 service Msg {
     // this line is used by starport scaffolding # proto/tx/rpc
+  rpc CreateBoardComment(MsgCreateBoardComment) returns (MsgCreateBoardCommentResponse);
+  rpc UpdateBoardComment(MsgUpdateBoardComment) returns (MsgUpdateBoardCommentResponse);
+  rpc DeleteBoardComment(MsgDeleteBoardComment) returns (MsgDeleteBoardCommentResponse);
+  rpc CreateBoard(MsgCreateBoard) returns (MsgCreateBoardResponse);
+  rpc UpdateBoard(MsgUpdateBoard) returns (MsgUpdateBoardResponse);
+  rpc DeleteBoard(MsgDeleteBoard) returns (MsgDeleteBoardResponse);
   rpc CreateStockTransaction(MsgCreateStockTransaction) returns (MsgCreateStockTransactionResponse);
   rpc DeleteStockTransaction(MsgDeleteStockTransaction) returns (MsgDeleteStockTransactionResponse);
   rpc CreateStockData(MsgCreateStockData) returns (MsgCreateStockDataResponse);
@@ -21,6 +29,54 @@ service Msg {
 }
 
 // this line is used by starport scaffolding # proto/tx/message
+message MsgCreateBoardComment {
+  string creator = 1;
+  uint64 board_comment_id = 2;
+  string body = 3;
+}
+message MsgCreateBoardCommentResponse { }
+
+message MsgUpdateBoardComment {
+  string creator = 1;
+  uint64 board_comment_id = 2;
+  int64 comment_id = 3;
+  string body = 4;
+}
+message MsgUpdateBoardCommentResponse { }
+
+message MsgDeleteBoardComment {
+  string creator = 1;
+  uint64 board_comment_id = 2;
+  int64 comment_id = 3;
+}
+message MsgDeleteBoardCommentResponse { }
+
+message MsgCreateBoard {
+  string creator = 1;
+  string title = 2;
+  string body = 3;
+}
+
+message MsgCreateBoardResponse {
+  uint64 id = 1;
+}
+
+message MsgUpdateBoard {
+  string creator = 1;
+  uint64 id = 2;
+  string title = 3;
+  string body = 4;
+}
+
+message MsgUpdateBoardResponse { }
+
+message MsgDeleteBoard {
+  string creator = 1;
+  uint64 id = 2;
+}
+
+message MsgDeleteBoardResponse { }
+
 message MsgCreateStockTransaction {
   string creator = 1;
   string code = 2;

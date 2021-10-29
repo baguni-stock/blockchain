@@ -2,6 +2,8 @@ syntax = "proto3";
 package chainstockproject.blockchain.blockchain;
 
 // this line is used by starport scaffolding # genesis/proto/import
+import "blockchain/board_comment.proto";
+import "blockchain/board.proto";
 import "blockchain/stock_transaction.proto";
 import "blockchain/stock_data.proto";
 import "blockchain/user.proto";
@@ -11,6 +13,9 @@ option go_package = "github.com/chainstock-project/blockchain/x/blockchain/types
 // GenesisState defines the blockchain module's genesis state.
 message GenesisState {
     // this line is used by starport scaffolding # genesis/proto/state
+		repeated BoardComment boardCommentList = 6; // this line is used by starport scaffolding # genesis/proto/stateField
+		repeated Board boardList = 4; // this line is used by starport scaffolding # genesis/proto/stateField
+		uint64 boardCount = 5; // this line is used by starport scaffolding # genesis/proto/stateField
 		repeated StockTransaction stockTransactionList = 3; // this line is used by starport scaffolding # genesis/proto/stateField
 		repeated StockData stockDataList = 2; // this line is used by starport scaffolding # genesis/proto/stateField
 		repeated User userList = 1; // this line is used by starport scaffolding # genesis/proto/stateField

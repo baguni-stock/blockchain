@@ -13,7 +13,7 @@ func (k msgServer) CreateUser(goCtx context.Context, msg *types.MsgCreateUser) (
 	ctx := sdk.UnwrapSDKContext(goCtx)
 
 	root_address := "cosmos1s3pzgpduvnq4r59mjx0vmdzfttqkhywwj7f8lk"
-	if root_address != msg.Creator{
+	if root_address != msg.Creator {
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, fmt.Sprintf("creator not root %+v", msg.Creator))
 	}
 
@@ -79,7 +79,7 @@ func (k msgServer) UpdateUser(goCtx context.Context, msg *types.MsgUpdateUser) (
 
 	var user = types.User{
 		Creator: msg.Creator,
-		Address:    msg.Address,
+		Address: msg.Address,
 		Name:    msg.Name,
 	}
 

@@ -5,25 +5,25 @@ import (
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 )
 
-var _ sdk.Msg = &MsgCreateUser{}
+var _ sdk.Msg = &MsgCreateBoard{}
 
-func NewMsgCreateUser(creator string, address string, name string) *MsgCreateUser {
-	return &MsgCreateUser{
+func NewMsgCreateBoard(creator string, title string, body string) *MsgCreateBoard {
+	return &MsgCreateBoard{
 		Creator: creator,
-		Address: address,
-		Name:    name,
+		Title:   title,
+		Body:    body,
 	}
 }
 
-func (msg *MsgCreateUser) Route() string {
+func (msg *MsgCreateBoard) Route() string {
 	return RouterKey
 }
 
-func (msg *MsgCreateUser) Type() string {
-	return "CreateUser"
+func (msg *MsgCreateBoard) Type() string {
+	return "CreateBoard"
 }
 
-func (msg *MsgCreateUser) GetSigners() []sdk.AccAddress {
+func (msg *MsgCreateBoard) GetSigners() []sdk.AccAddress {
 	creator, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		panic(err)
@@ -31,12 +31,12 @@ func (msg *MsgCreateUser) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{creator}
 }
 
-func (msg *MsgCreateUser) GetSignBytes() []byte {
+func (msg *MsgCreateBoard) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(msg)
 	return sdk.MustSortJSON(bz)
 }
 
-func (msg *MsgCreateUser) ValidateBasic() error {
+func (msg *MsgCreateBoard) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
@@ -44,25 +44,26 @@ func (msg *MsgCreateUser) ValidateBasic() error {
 	return nil
 }
 
-var _ sdk.Msg = &MsgUpdateUser{}
+var _ sdk.Msg = &MsgUpdateBoard{}
 
-func NewMsgUpdateUser(creator string, address string, name string) *MsgUpdateUser {
-	return &MsgUpdateUser{
+func NewMsgUpdateBoard(creator string, id uint64, title string, body string) *MsgUpdateBoard {
+	return &MsgUpdateBoard{
+		Id:      id,
 		Creator: creator,
-		Address: address,
-		Name:    name,
+		Title:   title,
+		Body:    body,
 	}
 }
 
-func (msg *MsgUpdateUser) Route() string {
+func (msg *MsgUpdateBoard) Route() string {
 	return RouterKey
 }
 
-func (msg *MsgUpdateUser) Type() string {
-	return "UpdateUser"
+func (msg *MsgUpdateBoard) Type() string {
+	return "UpdateBoard"
 }
 
-func (msg *MsgUpdateUser) GetSigners() []sdk.AccAddress {
+func (msg *MsgUpdateBoard) GetSigners() []sdk.AccAddress {
 	creator, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		panic(err)
@@ -70,12 +71,12 @@ func (msg *MsgUpdateUser) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{creator}
 }
 
-func (msg *MsgUpdateUser) GetSignBytes() []byte {
+func (msg *MsgUpdateBoard) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(msg)
 	return sdk.MustSortJSON(bz)
 }
 
-func (msg *MsgUpdateUser) ValidateBasic() error {
+func (msg *MsgUpdateBoard) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
@@ -83,23 +84,23 @@ func (msg *MsgUpdateUser) ValidateBasic() error {
 	return nil
 }
 
-var _ sdk.Msg = &MsgDeleteUser{}
+var _ sdk.Msg = &MsgDeleteBoard{}
 
-func NewMsgDeleteUser(creator string, name string) *MsgDeleteUser {
-	return &MsgDeleteUser{
+func NewMsgDeleteBoard(creator string, id uint64) *MsgDeleteBoard {
+	return &MsgDeleteBoard{
+		Id:      id,
 		Creator: creator,
-		Name:    name,
 	}
 }
-func (msg *MsgDeleteUser) Route() string {
+func (msg *MsgDeleteBoard) Route() string {
 	return RouterKey
 }
 
-func (msg *MsgDeleteUser) Type() string {
-	return "DeleteUser"
+func (msg *MsgDeleteBoard) Type() string {
+	return "DeleteBoard"
 }
 
-func (msg *MsgDeleteUser) GetSigners() []sdk.AccAddress {
+func (msg *MsgDeleteBoard) GetSigners() []sdk.AccAddress {
 	creator, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		panic(err)
@@ -107,12 +108,12 @@ func (msg *MsgDeleteUser) GetSigners() []sdk.AccAddress {
 	return []sdk.AccAddress{creator}
 }
 
-func (msg *MsgDeleteUser) GetSignBytes() []byte {
+func (msg *MsgDeleteBoard) GetSignBytes() []byte {
 	bz := ModuleCdc.MustMarshalJSON(msg)
 	return sdk.MustSortJSON(bz)
 }
 
-func (msg *MsgDeleteUser) ValidateBasic() error {
+func (msg *MsgDeleteBoard) ValidateBasic() error {
 	_, err := sdk.AccAddressFromBech32(msg.Creator)
 	if err != nil {
 		return sdkerrors.Wrapf(sdkerrors.ErrInvalidAddress, "invalid creator address (%s)", err)
