@@ -9,5 +9,4 @@ message Board {
   uint64 id = 2;
   string title = 3; 
   string body = 4; 
-  string date = 5; 
 }
